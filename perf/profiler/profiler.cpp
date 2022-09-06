@@ -338,6 +338,7 @@ int process_event(char *base, unsigned long long size, unsigned long long offset
 
 int main(int argc, char *argv[]) {
     kernel_symbols = load_kernel();
+    if (argc<2) { printf("Need pid\n"); return 1; }
     int pid = atoi(argv[1]); if (pid<=0) { printf("invalid pid %s\n", argv[1]); return 1; }
     // find cgroup
     char xb[256], xb2[256];
@@ -348,6 +349,7 @@ int main(int argc, char *argv[]) {
     if (fp==NULL) error("fail to open cgroup file");
     char *p;
     xb2[0]=0;
+    int cgroup_name_len=0;
     while(1) {
         p = fgets(xb, sizeof(xb), fp); if (p==NULL) break;
         i=0; while(p[i]&&p[i]!=':') i++; if (p[i]==0) continue; 
@@ -355,14 +357,20 @@ int main(int argc, char *argv[]) {
             i++; while(p[i]!=':'&&p[i]) i++;  if (p[i]!=':') continue; i++;
             j=i; while(p[j]!='\r'&&p[j]!='\n'&&p[j]!=0) j++; p[j]=0;
             sprintf(xb2, "/sys/fs/cgroup/perf_event%s", p+i);
+            cgroup_name_len=j-i;
             break;
         } else if (p[i+1]==':') {
             i+=2; j=i; while(p[j]!='\r'&&p[j]!='\n'&&p[j]!=0) j++; p[j]=0;
             sprintf(xb2, "/sys/fs/cgroup/%s", p+i);
+            cgroup_name_len=j-i;
         }
     }
     fclose(fp);
     if (xb2[0]==0) error("no proper cgroup found\n");
+    if (cgroup_name_len<2) {
+        printf("cgroup %s seems to be root, not allowed\n", xb2);
+        return -1;
+    }
     printf("try to use cgroup %s\n", xb2);
     int cgroup_id = open(xb2, O_CLOEXEC);
     if (cgroup_id<=0) { perror("error open cgroup dir"); return 1; }
