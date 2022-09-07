@@ -6,6 +6,7 @@ Fit for lightwight usage, minimum dependency
 g++ -o profiler profiler.cpp
 ```
 The code needs c++11 features, if an old g++ compiler is used, `-std=c++11` is needed.
+You can also use static c/c++ libs via `-static-libstdc++ -static-libgcc`, or even further to build a static executable `-static`
 
 
 ## How it works
