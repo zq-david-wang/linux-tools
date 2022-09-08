@@ -1,0 +1,3309 @@
+<head> <link rel="stylesheet" href="report.css"> <script src="report.js"> </script> </head>
+<ul class="tree">
+<li>
+<input type="checkbox" id="c0" />
+<label class="tree_label" for="c0">runtime.goexit.abi0(72.995% 719/985)</label>
+<ul>
+<li>
+<input type="checkbox" id="c1" />
+<label class="tree_label" for="c1">github.com/containerd/containerd/gc/scheduler.init.0.func1.1(68.846% 495/719)</label>
+<ul>
+<li>
+<input type="checkbox" id="c2" />
+<label class="tree_label" for="c2">github.com/containerd/containerd/gc/scheduler.(*gcScheduler).run(97.172% 481/495)</label>
+<ul>
+<li>
+<input type="checkbox" id="c3" />
+<label class="tree_label" for="c3">runtime.selectgo(86.694% 417/481)</label>
+<ul>
+<li>
+<input type="checkbox" id="c4" />
+<label class="tree_label" for="c4">runtime.mcall(98.801% 412/417)</label>
+<ul>
+<li>
+<input type="checkbox" id="c5" />
+<label class="tree_label" for="c5">runtime.park_m(100.000% 412/412)</label>
+<ul>
+<li>
+<input type="checkbox" id="c6" />
+<label class="tree_label" for="c6">runtime.schedule(98.301% 405/412)</label>
+<ul>
+<li>
+<input type="checkbox" id="c7" />
+<label class="tree_label" for="c7">runtime.findrunnable(82.963% 336/405)</label>
+<ul>
+<li>
+<input type="checkbox" id="c8" />
+<label class="tree_label" for="c8">runtime.epollwait.abi0(30.357% 102/336)</label>
+<ul>
+<li>
+<input type="checkbox" id="c9" />
+<label class="tree_label" for="c9">entry_SYSCALL_64_after_hwframe(99.020% 101/102)</label>
+<ul>
+<li>
+<input type="checkbox" id="c10" />
+<label class="tree_label" for="c10">do_syscall_64(100.000% 101/101)</label>
+<ul>
+<li>
+<input type="checkbox" id="c11" />
+<label class="tree_label" for="c11">__x64_sys_epoll_pwait(88.119% 89/101)</label>
+<ul>
+<li>
+<input type="checkbox" id="c12" />
+<label class="tree_label" for="c12">do_epoll_wait(95.506% 85/89)</label>
+<ul>
+<li>
+<input type="checkbox" id="c13" />
+<label class="tree_label" for="c13">schedule_hrtimeout_range_clock(49.412% 42/85)</label>
+<ul>
+<li>
+<input type="checkbox" id="c14" />
+<label class="tree_label" for="c14">schedule(85.714% 36/42)</label>
+<ul>
+<li>
+<input type="checkbox" id="c15" />
+<label class="tree_label" for="c15">__schedule(100.000% 36/36)</label>
+<ul>
+<li>
+<input type="checkbox" id="c16" />
+<label class="tree_label" for="c16">finish_task_switch(100.000% 36/36)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c17" />
+<label class="tree_label" for="c17">hrtimer_init_sleeper(4.762% 2/42)</label>
+<ul>
+<li>
+<input type="checkbox" id="c18" />
+<label class="tree_label" for="c18">__hrtimer_init(100.000% 2/2)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c19" />
+<label class="tree_label" for="c19">_raw_spin_unlock_irqrestore(4.762% 2/42)</label>
+<ul>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c20" />
+<label class="tree_label" for="c20">hrtimer_try_to_cancel.part.0(2.381% 1/42)</label>
+<ul>
+<li>
+<input type="checkbox" id="c21" />
+<label class="tree_label" for="c21">_raw_spin_lock_irqsave(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c22" />
+<label class="tree_label" for="c22">__fget_light(10.588% 9/85)</label>
+<ul>
+<li>
+<input type="checkbox" id="c23" />
+<label class="tree_label" for="c23">__fget_files(66.667% 6/9)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c24" />
+<label class="tree_label" for="c24">fput_many(7.059% 6/85)</label>
+<ul>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c25" />
+<label class="tree_label" for="c25">timespec64_add_safe(2.353% 2/85)</label>
+<ul>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c26" />
+<label class="tree_label" for="c26">select_estimate_accuracy(2.353% 2/85)</label>
+<ul>
+<li>
+<input type="checkbox" id="c27" />
+<label class="tree_label" for="c27">ktime_get_ts64(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c28" />
+<label class="tree_label" for="c28">kvm_clock_get_cycles(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c29" />
+<label class="tree_label" for="c29">pvclock_clocksource_read(100.000% 2/2)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c30" />
+<label class="tree_label" for="c30">ktime_get_ts64(2.353% 2/85)</label>
+<ul>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c31" />
+<label class="tree_label" for="c31">schedule_hrtimeout_range(1.176% 1/85)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c32" />
+<label class="tree_label" for="c32">set_user_sigmask(1.124% 1/89)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c33" />
+<label class="tree_label" for="c33">syscall_enter_from_user_mode(6.931% 7/101)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c34" />
+<label class="tree_label" for="c34">runtime.stealWork(15.476% 52/336)</label>
+<ul>
+<li>
+<input type="checkbox" id="c35" />
+<label class="tree_label" for="c35">runtime.checkTimers(98.077% 51/52)</label>
+<ul>
+<li>
+<input type="checkbox" id="c36" />
+<label class="tree_label" for="c36">runtime.runtimer(80.392% 41/51)</label>
+<ul>
+<li>
+<input type="checkbox" id="c37" />
+<label class="tree_label" for="c37">runtime.runOneTimer(85.366% 35/41)</label>
+<ul>
+<li>
+<input type="checkbox" id="c38" />
+<label class="tree_label" for="c38">time.sendTime(80.000% 28/35)</label>
+<ul>
+<li>
+<input type="checkbox" id="c39" />
+<label class="tree_label" for="c39">runtime.selectnbsend(89.286% 25/28)</label>
+<ul>
+<li>
+<input type="checkbox" id="c40" />
+<label class="tree_label" for="c40">runtime.chansend(64.000% 16/25)</label>
+<ul>
+<li>
+<input type="checkbox" id="c41" />
+<label class="tree_label" for="c41">runtime.send(50.000% 8/16)</label>
+<ul>
+<li>
+<input type="checkbox" id="c42" />
+<label class="tree_label" for="c42">runtime.goready(87.500% 7/8)</label>
+<ul>
+<li>
+<input type="checkbox" id="c43" />
+<label class="tree_label" for="c43">runtime.goready.func1(71.429% 5/7)</label>
+<ul>
+<li>
+<input type="checkbox" id="c44" />
+<label class="tree_label" for="c44">runtime.ready(40.000% 2/5)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c45" />
+<label class="tree_label" for="c45">runtime.dodeltimer0(2.857% 1/35)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c46" />
+<label class="tree_label" for="c46">runtime.stopm(9.821% 33/336)</label>
+<ul>
+<li>
+<input type="checkbox" id="c47" />
+<label class="tree_label" for="c47">runtime.notesleep(81.818% 27/33)</label>
+<ul>
+<li>
+<input type="checkbox" id="c48" />
+<label class="tree_label" for="c48">runtime.futex.abi0(70.370% 19/27)</label>
+<ul>
+<li>
+<input type="checkbox" id="c49" />
+<label class="tree_label" for="c49">entry_SYSCALL_64_after_hwframe(100.000% 19/19)</label>
+<ul>
+<li>
+<input type="checkbox" id="c50" />
+<label class="tree_label" for="c50">do_syscall_64(100.000% 19/19)</label>
+<ul>
+<li>
+<input type="checkbox" id="c51" />
+<label class="tree_label" for="c51">__x64_sys_futex(100.000% 19/19)</label>
+<ul>
+<li>
+<input type="checkbox" id="c52" />
+<label class="tree_label" for="c52">do_futex(89.474% 17/19)</label>
+<ul>
+<li>
+<input type="checkbox" id="c53" />
+<label class="tree_label" for="c53">futex_wait(100.000% 17/17)</label>
+<ul>
+<li>
+<input type="checkbox" id="c54" />
+<label class="tree_label" for="c54">futex_wait_queue_me(82.353% 14/17)</label>
+<ul>
+<li>
+<input type="checkbox" id="c55" />
+<label class="tree_label" for="c55">schedule(100.000% 14/14)</label>
+<ul>
+<li>
+<input type="checkbox" id="c56" />
+<label class="tree_label" for="c56">__schedule(100.000% 14/14)</label>
+<ul>
+<li>
+<input type="checkbox" id="c57" />
+<label class="tree_label" for="c57">finish_task_switch(92.857% 13/14)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c58" />
+<label class="tree_label" for="c58">futex_wait_setup(5.882% 1/17)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c59" />
+<label class="tree_label" for="c59">runtime.mput(6.061% 2/33)</label>
+<ul>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c60" />
+<label class="tree_label" for="c60">runtime.acquirep(6.061% 2/33)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c61" />
+<label class="tree_label" for="c61">runtime.netpollBreak(4.762% 16/336)</label>
+<ul>
+<li>
+<input type="checkbox" id="c62" />
+<label class="tree_label" for="c62">runtime.write1.abi0(87.500% 14/16)</label>
+<ul>
+<li>
+<input type="checkbox" id="c63" />
+<label class="tree_label" for="c63">entry_SYSCALL_64_after_hwframe(100.000% 14/14)</label>
+<ul>
+<li>
+<input type="checkbox" id="c64" />
+<label class="tree_label" for="c64">do_syscall_64(100.000% 14/14)</label>
+<ul>
+<li>
+<input type="checkbox" id="c65" />
+<label class="tree_label" for="c65">ksys_write(85.714% 12/14)</label>
+<ul>
+<li>
+<input type="checkbox" id="c66" />
+<label class="tree_label" for="c66">vfs_write(100.000% 12/12)</label>
+<ul>
+<li>
+<input type="checkbox" id="c67" />
+<label class="tree_label" for="c67">new_sync_write(91.667% 11/12)</label>
+<ul>
+<li>
+<input type="checkbox" id="c68" />
+<label class="tree_label" for="c68">pipe_write(90.909% 10/11)</label>
+<ul>
+<li>
+<input type="checkbox" id="c69" />
+<label class="tree_label" for="c69">file_update_time(40.000% 4/10)</label>
+<ul>
+<li>
+<input type="checkbox" id="c70" />
+<label class="tree_label" for="c70">generic_update_time(75.000% 3/4)</label>
+<ul>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c71" />
+<label class="tree_label" for="c71">current_time(25.000% 1/4)</label>
+<ul>
+<li>
+<input type="checkbox" id="c72" />
+<label class="tree_label" for="c72">ktime_get_coarse_real_ts64(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c73" />
+<label class="tree_label" for="c73">__wake_up_common_lock(30.000% 3/10)</label>
+<ul>
+<li>
+<input type="checkbox" id="c74" />
+<label class="tree_label" for="c74">_raw_spin_unlock_irqrestore(100.000% 3/3)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c75" />
+<label class="tree_label" for="c75">copy_page_from_iter(10.000% 1/10)</label>
+<ul>
+<li>
+<input type="checkbox" id="c76" />
+<label class="tree_label" for="c76">copy_user_generic_string(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c77" />
+<label class="tree_label" for="c77">security_file_permission(8.333% 1/12)</label>
+<ul>
+<li>
+<input type="checkbox" id="c78" />
+<label class="tree_label" for="c78">apparmor_file_permission(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c79" />
+<label class="tree_label" for="c79">__x64_sys_write(14.286% 2/14)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c80" />
+<label class="tree_label" for="c80">runtime.checkTimers(2.381% 8/336)</label>
+<ul>
+<li>
+<input type="checkbox" id="c81" />
+<label class="tree_label" for="c81">runtime.runtimer(75.000% 6/8)</label>
+<ul>
+<li>
+<input type="checkbox" id="c82" />
+<label class="tree_label" for="c82">runtime.runOneTimer(83.333% 5/6)</label>
+<ul>
+<li>
+<input type="checkbox" id="c83" />
+<label class="tree_label" for="c83">time.sendTime(80.000% 4/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c84" />
+<label class="tree_label" for="c84">runtime.selectnbsend(75.000% 3/4)</label>
+<ul>
+<li>
+<input type="checkbox" id="c85" />
+<label class="tree_label" for="c85">runtime.chansend(100.000% 3/3)</label>
+<ul>
+<li>
+<input type="checkbox" id="c86" />
+<label class="tree_label" for="c86">runtime.send(100.000% 3/3)</label>
+<ul>
+<li>
+<input type="checkbox" id="c87" />
+<label class="tree_label" for="c87">runtime.goready(66.667% 2/3)</label>
+<ul>
+<li>
+<input type="checkbox" id="c88" />
+<label class="tree_label" for="c88">runtime.goready.func1(50.000% 1/2)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c89" />
+<label class="tree_label" for="c89">runtime.chansend.func1(33.333% 1/3)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c90" />
+<label class="tree_label" for="c90">runtime.read.abi0(1.488% 5/336)</label>
+<ul>
+<li>
+<input type="checkbox" id="c91" />
+<label class="tree_label" for="c91">entry_SYSCALL_64_after_hwframe(100.000% 5/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c92" />
+<label class="tree_label" for="c92">do_syscall_64(100.000% 5/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c93" />
+<label class="tree_label" for="c93">ksys_read(100.000% 5/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c94" />
+<label class="tree_label" for="c94">vfs_read(100.000% 5/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c95" />
+<label class="tree_label" for="c95">new_sync_read(80.000% 4/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c96" />
+<label class="tree_label" for="c96">pipe_read(100.000% 4/4)</label>
+<ul>
+<li>
+<input type="checkbox" id="c97" />
+<label class="tree_label" for="c97">anon_pipe_buf_release(50.000% 2/4)</label>
+<ul>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c98" />
+<label class="tree_label" for="c98">touch_atime(25.000% 1/4)</label>
+<ul>
+<li>
+<input type="checkbox" id="c99" />
+<label class="tree_label" for="c99">atime_needs_update(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c100" />
+<label class="tree_label" for="c100">current_time(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c101" />
+<label class="tree_label" for="c101">ktime_get_coarse_real_ts64(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c102" />
+<label class="tree_label" for="c102">security_file_permission(20.000% 1/5)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c103" />
+<label class="tree_label" for="c103">runtime.resetspinning(7.407% 30/405)</label>
+<ul>
+<li>
+<input type="checkbox" id="c104" />
+<label class="tree_label" for="c104">runtime.wakep(96.667% 29/30)</label>
+<ul>
+<li>
+<input type="checkbox" id="c105" />
+<label class="tree_label" for="c105">runtime.startm(86.207% 25/29)</label>
+<ul>
+<li>
+<input type="checkbox" id="c106" />
+<label class="tree_label" for="c106">runtime.notewakeup(100.000% 25/25)</label>
+<ul>
+<li>
+<input type="checkbox" id="c107" />
+<label class="tree_label" for="c107">runtime.futex.abi0(96.000% 24/25)</label>
+<ul>
+<li>
+<input type="checkbox" id="c108" />
+<label class="tree_label" for="c108">entry_SYSCALL_64_after_hwframe(100.000% 24/24)</label>
+<ul>
+<li>
+<input type="checkbox" id="c109" />
+<label class="tree_label" for="c109">do_syscall_64(100.000% 24/24)</label>
+<ul>
+<li>
+<input type="checkbox" id="c110" />
+<label class="tree_label" for="c110">__x64_sys_futex(100.000% 24/24)</label>
+<ul>
+<li>
+<input type="checkbox" id="c111" />
+<label class="tree_label" for="c111">do_futex(95.833% 23/24)</label>
+<ul>
+<li>
+<input type="checkbox" id="c112" />
+<label class="tree_label" for="c112">futex_wake(100.000% 23/23)</label>
+<ul>
+<li>
+<input type="checkbox" id="c113" />
+<label class="tree_label" for="c113">wake_up_q(47.826% 11/23)</label>
+<ul>
+<li>
+<input type="checkbox" id="c114" />
+<label class="tree_label" for="c114">try_to_wake_up(100.000% 11/11)</label>
+<ul>
+<li>
+<input type="checkbox" id="c115" />
+<label class="tree_label" for="c115">_raw_spin_unlock_irqrestore(100.000% 11/11)</label>
+<ul>
+<li>
+<input type="checkbox" id="c116" />
+<label class="tree_label" for="c116">asm_sysvec_apic_timer_interrupt(9.091% 1/11)</label>
+<ul>
+<li>
+<input type="checkbox" id="c117" />
+<label class="tree_label" for="c117">sysvec_apic_timer_interrupt(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c118" />
+<label class="tree_label" for="c118">irq_exit_rcu(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c119" />
+<label class="tree_label" for="c119">do_softirq_own_stack(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c120" />
+<label class="tree_label" for="c120">asm_call_sysvec_on_stack(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c121" />
+<label class="tree_label" for="c121">__softirqentry_text_start(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c122" />
+<label class="tree_label" for="c122">__run_timers.part.0(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c123" />
+<label class="tree_label" for="c123">wake_q_add_safe(8.696% 2/23)</label>
+<ul>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c124" />
+<label class="tree_label" for="c124">mark_wake_futex(8.696% 2/23)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c125" />
+<label class="tree_label" for="c125">github.com/containerd/containerd/gc/scheduler.schedule(9.148% 44/481)</label>
+<ul>
+<li>
+<input type="checkbox" id="c126" />
+<label class="tree_label" for="c126">time.NewTimer(59.091% 26/44)</label>
+<ul>
+<li>
+<input type="checkbox" id="c127" />
+<label class="tree_label" for="c127">runtime.makechan(30.769% 8/26)</label>
+<ul>
+<li>
+<input type="checkbox" id="c128" />
+<label class="tree_label" for="c128">runtime.newobject(75.000% 6/8)</label>
+<ul>
+<li>
+<input type="checkbox" id="c129" />
+<label class="tree_label" for="c129">runtime.mallocgc(16.667% 1/6)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c130" />
+<label class="tree_label" for="c130">runtime.mallocgc(25.000% 2/8)</label>
+<ul>
+<li>
+<input type="checkbox" id="c131" />
+<label class="tree_label" for="c131">asm_sysvec_reschedule_ipi(50.000% 1/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c132" />
+<label class="tree_label" for="c132">irqentry_exit_to_user_mode(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c133" />
+<label class="tree_label" for="c133">exit_to_user_mode_prepare(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c134" />
+<label class="tree_label" for="c134">time.startTimer(26.923% 7/26)</label>
+<ul>
+<li>
+<input type="checkbox" id="c135" />
+<label class="tree_label" for="c135">runtime.addtimer(57.143% 4/7)</label>
+<ul>
+<li>
+<input type="checkbox" id="c136" />
+<label class="tree_label" for="c136">runtime.wakeNetPoller(25.000% 1/4)</label>
+<ul>
+<li>
+<input type="checkbox" id="c137" />
+<label class="tree_label" for="c137">runtime.netpollBreak(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c138" />
+<label class="tree_label" for="c138">runtime.write1.abi0(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c139" />
+<label class="tree_label" for="c139">entry_SYSCALL_64_after_hwframe(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c140" />
+<label class="tree_label" for="c140">do_syscall_64(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c141" />
+<label class="tree_label" for="c141">ksys_write(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c142" />
+<label class="tree_label" for="c142">vfs_write(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c143" />
+<label class="tree_label" for="c143">new_sync_write(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c144" />
+<label class="tree_label" for="c144">pipe_write(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c145" />
+<label class="tree_label" for="c145">__wake_up_common_lock(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c146" />
+<label class="tree_label" for="c146">_raw_spin_unlock_irqrestore(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c147" />
+<label class="tree_label" for="c147">runtime.newobject(15.385% 4/26)</label>
+<ul>
+<li>
+<input type="checkbox" id="c148" />
+<label class="tree_label" for="c148">runtime.mallocgc(25.000% 1/4)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c149" />
+<label class="tree_label" for="c149">time.when(3.846% 1/26)</label>
+<ul>
+<li>
+<input type="checkbox" id="c150" />
+<label class="tree_label" for="c150">runtime.nanotime(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c151" />
+<label class="tree_label" for="c151">runtime.newobject(29.545% 13/44)</label>
+<ul>
+<li>
+<input type="checkbox" id="c152" />
+<label class="tree_label" for="c152">runtime.mallocgc(38.462% 5/13)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c153" />
+<label class="tree_label" for="c153">time.(*Time).addSec(2.273% 1/44)</label>
+<ul>
+<li>
+<input type="checkbox" id="c154" />
+<label class="tree_label" for="c154">asm_sysvec_apic_timer_interrupt(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c155" />
+<label class="tree_label" for="c155">sysvec_apic_timer_interrupt(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c156" />
+<label class="tree_label" for="c156">irq_exit_rcu(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c157" />
+<label class="tree_label" for="c157">do_softirq_own_stack(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c158" />
+<label class="tree_label" for="c158">asm_call_sysvec_on_stack(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c159" />
+<label class="tree_label" for="c159">__softirqentry_text_start(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c160" />
+<label class="tree_label" for="c160">rebalance_domains(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c161" />
+<label class="tree_label" for="c161">load_balance(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c162" />
+<label class="tree_label" for="c162">find_busiest_group(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c163" />
+<label class="tree_label" for="c163">update_sd_lb_stats.constprop.0(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c164" />
+<label class="tree_label" for="c164">github.com/containerd/containerd/pkg/cri/server.(*eventMonitor).start.func1(11.961% 86/719)</label>
+<ul>
+<li>
+<input type="checkbox" id="c165" />
+<label class="tree_label" for="c165">runtime.selectgo(95.349% 82/86)</label>
+<ul>
+<li>
+<input type="checkbox" id="c166" />
+<label class="tree_label" for="c166">runtime.mcall(98.780% 81/82)</label>
+<ul>
+<li>
+<input type="checkbox" id="c167" />
+<label class="tree_label" for="c167">runtime.park_m(98.765% 80/81)</label>
+<ul>
+<li>
+<input type="checkbox" id="c168" />
+<label class="tree_label" for="c168">runtime.schedule(97.500% 78/80)</label>
+<ul>
+<li>
+<input type="checkbox" id="c169" />
+<label class="tree_label" for="c169">runtime.findrunnable(85.897% 67/78)</label>
+<ul>
+<li>
+<input type="checkbox" id="c170" />
+<label class="tree_label" for="c170">runtime.epollwait.abi0(31.343% 21/67)</label>
+<ul>
+<li>
+<input type="checkbox" id="c171" />
+<label class="tree_label" for="c171">entry_SYSCALL_64_after_hwframe(100.000% 21/21)</label>
+<ul>
+<li>
+<input type="checkbox" id="c172" />
+<label class="tree_label" for="c172">do_syscall_64(100.000% 21/21)</label>
+<ul>
+<li>
+<input type="checkbox" id="c173" />
+<label class="tree_label" for="c173">__x64_sys_epoll_pwait(95.238% 20/21)</label>
+<ul>
+<li>
+<input type="checkbox" id="c174" />
+<label class="tree_label" for="c174">do_epoll_wait(90.000% 18/20)</label>
+<ul>
+<li>
+<input type="checkbox" id="c175" />
+<label class="tree_label" for="c175">schedule_hrtimeout_range_clock(72.222% 13/18)</label>
+<ul>
+<li>
+<input type="checkbox" id="c176" />
+<label class="tree_label" for="c176">schedule(76.923% 10/13)</label>
+<ul>
+<li>
+<input type="checkbox" id="c177" />
+<label class="tree_label" for="c177">__schedule(100.000% 10/10)</label>
+<ul>
+<li>
+<input type="checkbox" id="c178" />
+<label class="tree_label" for="c178">finish_task_switch(80.000% 8/10)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c179" />
+<label class="tree_label" for="c179">hrtimer_try_to_cancel.part.0(7.692% 1/13)</label>
+<ul>
+<li>
+<input type="checkbox" id="c180" />
+<label class="tree_label" for="c180">_raw_spin_unlock_irqrestore(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c181" />
+<label class="tree_label" for="c181">hrtimer_active(7.692% 1/13)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c182" />
+<label class="tree_label" for="c182">fput_many(5.556% 1/18)</label>
+<ul>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c183" />
+<label class="tree_label" for="c183">__fget_light(5.556% 1/18)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c184" />
+<label class="tree_label" for="c184">set_user_sigmask(5.000% 1/20)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c185" />
+<label class="tree_label" for="c185">runtime.stopm(10.448% 7/67)</label>
+<ul>
+<li>
+<input type="checkbox" id="c186" />
+<label class="tree_label" for="c186">runtime.notesleep(85.714% 6/7)</label>
+<ul>
+<li>
+<input type="checkbox" id="c187" />
+<label class="tree_label" for="c187">runtime.futex.abi0(83.333% 5/6)</label>
+<ul>
+<li>
+<input type="checkbox" id="c188" />
+<label class="tree_label" for="c188">entry_SYSCALL_64_after_hwframe(100.000% 5/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c189" />
+<label class="tree_label" for="c189">do_syscall_64(100.000% 5/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c190" />
+<label class="tree_label" for="c190">__x64_sys_futex(100.000% 5/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c191" />
+<label class="tree_label" for="c191">do_futex(100.000% 5/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c192" />
+<label class="tree_label" for="c192">futex_wait(100.000% 5/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c193" />
+<label class="tree_label" for="c193">futex_wait_queue_me(80.000% 4/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c194" />
+<label class="tree_label" for="c194">schedule(100.000% 4/4)</label>
+<ul>
+<li>
+<input type="checkbox" id="c195" />
+<label class="tree_label" for="c195">__schedule(100.000% 4/4)</label>
+<ul>
+<li>
+<input type="checkbox" id="c196" />
+<label class="tree_label" for="c196">finish_task_switch(100.000% 4/4)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c197" />
+<label class="tree_label" for="c197">runtime.read.abi0(7.463% 5/67)</label>
+<ul>
+<li>
+<input type="checkbox" id="c198" />
+<label class="tree_label" for="c198">entry_SYSCALL_64_after_hwframe(100.000% 5/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c199" />
+<label class="tree_label" for="c199">do_syscall_64(100.000% 5/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c200" />
+<label class="tree_label" for="c200">ksys_read(100.000% 5/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c201" />
+<label class="tree_label" for="c201">vfs_read(100.000% 5/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c202" />
+<label class="tree_label" for="c202">new_sync_read(100.000% 5/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c203" />
+<label class="tree_label" for="c203">pipe_read(60.000% 3/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c204" />
+<label class="tree_label" for="c204">anon_pipe_buf_release(66.667% 2/3)</label>
+<ul>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c205" />
+<label class="tree_label" for="c205">touch_atime(33.333% 1/3)</label>
+<ul>
+<li>
+<input type="checkbox" id="c206" />
+<label class="tree_label" for="c206">__mark_inode_dirty(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c207" />
+<label class="tree_label" for="c207">runtime.checkTimers(5.970% 4/67)</label>
+<ul>
+<li>
+<input type="checkbox" id="c208" />
+<label class="tree_label" for="c208">runtime.runtimer(50.000% 2/4)</label>
+<ul>
+<li>
+<input type="checkbox" id="c209" />
+<label class="tree_label" for="c209">runtime.runOneTimer(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c210" />
+<label class="tree_label" for="c210">time.sendTime(50.000% 1/2)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c211" />
+<label class="tree_label" for="c211">runtime.netpollBreak(4.478% 3/67)</label>
+<ul>
+<li>
+<input type="checkbox" id="c212" />
+<label class="tree_label" for="c212">runtime.write1.abi0(100.000% 3/3)</label>
+<ul>
+<li>
+<input type="checkbox" id="c213" />
+<label class="tree_label" for="c213">entry_SYSCALL_64_after_hwframe(100.000% 3/3)</label>
+<ul>
+<li>
+<input type="checkbox" id="c214" />
+<label class="tree_label" for="c214">do_syscall_64(66.667% 2/3)</label>
+<ul>
+<li>
+<input type="checkbox" id="c215" />
+<label class="tree_label" for="c215">ksys_write(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c216" />
+<label class="tree_label" for="c216">vfs_write(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c217" />
+<label class="tree_label" for="c217">new_sync_write(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c218" />
+<label class="tree_label" for="c218">pipe_write(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c219" />
+<label class="tree_label" for="c219">__wake_up_common_lock(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c220" />
+<label class="tree_label" for="c220">_raw_spin_unlock_irqrestore(50.000% 1/2)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c221" />
+<label class="tree_label" for="c221">syscall_exit_to_user_mode(33.333% 1/3)</label>
+<ul>
+<li>
+<input type="checkbox" id="c222" />
+<label class="tree_label" for="c222">exit_to_user_mode_prepare(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c223" />
+<label class="tree_label" for="c223">schedule(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c224" />
+<label class="tree_label" for="c224">__schedule(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c225" />
+<label class="tree_label" for="c225">finish_task_switch(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c226" />
+<label class="tree_label" for="c226">runtime.stealWork(2.985% 2/67)</label>
+<ul>
+<li>
+<input type="checkbox" id="c227" />
+<label class="tree_label" for="c227">runtime.checkTimers(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c228" />
+<label class="tree_label" for="c228">runtime.runtimer(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c229" />
+<label class="tree_label" for="c229">runtime.runOneTimer(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c230" />
+<label class="tree_label" for="c230">time.sendTime(50.000% 1/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c231" />
+<label class="tree_label" for="c231">time.Now(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c232" />
+<label class="tree_label" for="c232">runtime.acquirep(2.985% 2/67)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c233" />
+<label class="tree_label" for="c233">runtime.resetspinning(10.256% 8/78)</label>
+<ul>
+<li>
+<input type="checkbox" id="c234" />
+<label class="tree_label" for="c234">runtime.wakep(87.500% 7/8)</label>
+<ul>
+<li>
+<input type="checkbox" id="c235" />
+<label class="tree_label" for="c235">runtime.startm(85.714% 6/7)</label>
+<ul>
+<li>
+<input type="checkbox" id="c236" />
+<label class="tree_label" for="c236">runtime.notewakeup(100.000% 6/6)</label>
+<ul>
+<li>
+<input type="checkbox" id="c237" />
+<label class="tree_label" for="c237">runtime.futex.abi0(100.000% 6/6)</label>
+<ul>
+<li>
+<input type="checkbox" id="c238" />
+<label class="tree_label" for="c238">entry_SYSCALL_64_after_hwframe(100.000% 6/6)</label>
+<ul>
+<li>
+<input type="checkbox" id="c239" />
+<label class="tree_label" for="c239">do_syscall_64(100.000% 6/6)</label>
+<ul>
+<li>
+<input type="checkbox" id="c240" />
+<label class="tree_label" for="c240">__x64_sys_futex(100.000% 6/6)</label>
+<ul>
+<li>
+<input type="checkbox" id="c241" />
+<label class="tree_label" for="c241">do_futex(100.000% 6/6)</label>
+<ul>
+<li>
+<input type="checkbox" id="c242" />
+<label class="tree_label" for="c242">futex_wake(66.667% 4/6)</label>
+<ul>
+<li>
+<input type="checkbox" id="c243" />
+<label class="tree_label" for="c243">wake_up_q(50.000% 2/4)</label>
+<ul>
+<li>
+<input type="checkbox" id="c244" />
+<label class="tree_label" for="c244">try_to_wake_up(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c245" />
+<label class="tree_label" for="c245">_raw_spin_unlock_irqrestore(100.000% 2/2)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c246" />
+<label class="tree_label" for="c246">wake_q_add_safe(50.000% 2/4)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c247" />
+<label class="tree_label" for="c247">runtime.selparkcommit(1.250% 1/80)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c248" />
+<label class="tree_label" for="c248">runtime.systemstack.abi0(8.484% 61/719)</label>
+<ul>
+<li>
+<input type="checkbox" id="c249" />
+<label class="tree_label" for="c249">runtime.gcBgMarkWorker.func2(100.000% 61/61)</label>
+<ul>
+<li>
+<input type="checkbox" id="c250" />
+<label class="tree_label" for="c250">runtime.gcDrain(90.164% 55/61)</label>
+<ul>
+<li>
+<input type="checkbox" id="c251" />
+<label class="tree_label" for="c251">runtime.scanobject(32.727% 18/55)</label>
+<ul>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c252" />
+<label class="tree_label" for="c252">runtime.markroot(20.000% 11/55)</label>
+<ul>
+<li>
+<input type="checkbox" id="c253" />
+<label class="tree_label" for="c253">runtime.markroot.func1(54.545% 6/11)</label>
+<ul>
+<li>
+<input type="checkbox" id="c254" />
+<label class="tree_label" for="c254">runtime.scanstack(33.333% 2/6)</label>
+<ul>
+<li>
+<input type="checkbox" id="c255" />
+<label class="tree_label" for="c255">runtime.gentraceback(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c256" />
+<label class="tree_label" for="c256">runtime.scanstack.func1(50.000% 1/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c257" />
+<label class="tree_label" for="c257">runtime.scanframeworker(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c258" />
+<label class="tree_label" for="c258">runtime.getStackMap(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c259" />
+<label class="tree_label" for="c259">runtime.pcdatavalue(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c260" />
+<label class="tree_label" for="c260">runtime.funcspdelta(50.000% 1/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c261" />
+<label class="tree_label" for="c261">runtime.pcvalue(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c262" />
+<label class="tree_label" for="c262">runtime.procyield.abi0(16.667% 1/6)</label>
+<ul>
+<li>
+<input type="checkbox" id="c263" />
+<label class="tree_label" for="c263">asm_sysvec_apic_timer_interrupt(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c264" />
+<label class="tree_label" for="c264">sysvec_apic_timer_interrupt(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c265" />
+<label class="tree_label" for="c265">irq_exit_rcu(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c266" />
+<label class="tree_label" for="c266">do_softirq_own_stack(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c267" />
+<label class="tree_label" for="c267">asm_call_sysvec_on_stack(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c268" />
+<label class="tree_label" for="c268">__softirqentry_text_start(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c269" />
+<label class="tree_label" for="c269">runtime.markrootBlock(45.455% 5/11)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c270" />
+<label class="tree_label" for="c270">runtime.wbBufFlush(3.636% 2/55)</label>
+<ul>
+<li>
+<input type="checkbox" id="c271" />
+<label class="tree_label" for="c271">runtime.wbBufFlush.func1(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c272" />
+<label class="tree_label" for="c272">runtime.wbBufFlush1(50.000% 1/2)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c273" />
+<label class="tree_label" for="c273">github.com/containerd/containerd/runtime/restart/monitor.init.0.func1.1(4.729% 34/719)</label>
+<ul>
+<li>
+<input type="checkbox" id="c274" />
+<label class="tree_label" for="c274">github.com/containerd/containerd/runtime/restart/monitor.(*monitor).run(100.000% 34/34)</label>
+<ul>
+<li>
+<input type="checkbox" id="c275" />
+<label class="tree_label" for="c275">time.Sleep(50.000% 17/34)</label>
+<ul>
+<li>
+<input type="checkbox" id="c276" />
+<label class="tree_label" for="c276">runtime.mcall(100.000% 17/17)</label>
+<ul>
+<li>
+<input type="checkbox" id="c277" />
+<label class="tree_label" for="c277">runtime.park_m(100.000% 17/17)</label>
+<ul>
+<li>
+<input type="checkbox" id="c278" />
+<label class="tree_label" for="c278">runtime.schedule(100.000% 17/17)</label>
+<ul>
+<li>
+<input type="checkbox" id="c279" />
+<label class="tree_label" for="c279">runtime.findrunnable(100.000% 17/17)</label>
+<ul>
+<li>
+<input type="checkbox" id="c280" />
+<label class="tree_label" for="c280">runtime.stopm(29.412% 5/17)</label>
+<ul>
+<li>
+<input type="checkbox" id="c281" />
+<label class="tree_label" for="c281">runtime.notesleep(80.000% 4/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c282" />
+<label class="tree_label" for="c282">runtime.futex.abi0(75.000% 3/4)</label>
+<ul>
+<li>
+<input type="checkbox" id="c283" />
+<label class="tree_label" for="c283">entry_SYSCALL_64_after_hwframe(100.000% 3/3)</label>
+<ul>
+<li>
+<input type="checkbox" id="c284" />
+<label class="tree_label" for="c284">do_syscall_64(100.000% 3/3)</label>
+<ul>
+<li>
+<input type="checkbox" id="c285" />
+<label class="tree_label" for="c285">__x64_sys_futex(66.667% 2/3)</label>
+<ul>
+<li>
+<input type="checkbox" id="c286" />
+<label class="tree_label" for="c286">do_futex(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c287" />
+<label class="tree_label" for="c287">futex_wait(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c288" />
+<label class="tree_label" for="c288">futex_wait_queue_me(50.000% 1/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c289" />
+<label class="tree_label" for="c289">schedule(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c290" />
+<label class="tree_label" for="c290">__schedule(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c291" />
+<label class="tree_label" for="c291">finish_task_switch(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c292" />
+<label class="tree_label" for="c292">__x64_sys_rt_sigreturn(33.333% 1/3)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c293" />
+<label class="tree_label" for="c293">runtime.mput(20.000% 1/5)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c294" />
+<label class="tree_label" for="c294">runtime.netpollBreak(29.412% 5/17)</label>
+<ul>
+<li>
+<input type="checkbox" id="c295" />
+<label class="tree_label" for="c295">runtime.write1.abi0(100.000% 5/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c296" />
+<label class="tree_label" for="c296">entry_SYSCALL_64_after_hwframe(100.000% 5/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c297" />
+<label class="tree_label" for="c297">do_syscall_64(100.000% 5/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c298" />
+<label class="tree_label" for="c298">ksys_write(100.000% 5/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c299" />
+<label class="tree_label" for="c299">vfs_write(100.000% 5/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c300" />
+<label class="tree_label" for="c300">new_sync_write(100.000% 5/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c301" />
+<label class="tree_label" for="c301">pipe_write(100.000% 5/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c302" />
+<label class="tree_label" for="c302">__wake_up_common_lock(60.000% 3/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c303" />
+<label class="tree_label" for="c303">_raw_spin_unlock_irqrestore(100.000% 3/3)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c304" />
+<label class="tree_label" for="c304">copy_page_from_iter(20.000% 1/5)</label>
+<ul>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c305" />
+<label class="tree_label" for="c305">__wake_up_sync_key(20.000% 1/5)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c306" />
+<label class="tree_label" for="c306">runtime.epollwait.abi0(11.765% 2/17)</label>
+<ul>
+<li>
+<input type="checkbox" id="c307" />
+<label class="tree_label" for="c307">entry_SYSCALL_64_after_hwframe(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c308" />
+<label class="tree_label" for="c308">do_syscall_64(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c309" />
+<label class="tree_label" for="c309">__x64_sys_epoll_pwait(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c310" />
+<label class="tree_label" for="c310">do_epoll_wait(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c311" />
+<label class="tree_label" for="c311">schedule_hrtimeout_range_clock(50.000% 1/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c312" />
+<label class="tree_label" for="c312">schedule(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c313" />
+<label class="tree_label" for="c313">__schedule(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c314" />
+<label class="tree_label" for="c314">finish_task_switch(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c315" />
+<label class="tree_label" for="c315">fput_many(50.000% 1/2)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c316" />
+<label class="tree_label" for="c316">runtime.stealWork(5.882% 1/17)</label>
+<ul>
+<li>
+<input type="checkbox" id="c317" />
+<label class="tree_label" for="c317">runtime.checkTimers(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c318" />
+<label class="tree_label" for="c318">runtime.runtimer(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c319" />
+<label class="tree_label" for="c319">runtime.runOneTimer(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c320" />
+<label class="tree_label" for="c320">time.sendTime(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c321" />
+<label class="tree_label" for="c321">time.Now(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c322" />
+<label class="tree_label" for="c322">runtime.checkTimers(5.882% 1/17)</label>
+<ul>
+<li>
+<input type="checkbox" id="c323" />
+<label class="tree_label" for="c323">runtime.runtimer(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c324" />
+<label class="tree_label" for="c324">runtime.runOneTimer(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c325" />
+<label class="tree_label" for="c325">time.sendTime(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c326" />
+<label class="tree_label" for="c326">runtime.selectnbsend(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c327" />
+<label class="tree_label" for="c327">runtime.chansend(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c328" />
+<label class="tree_label" for="c328">runtime.send(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c329" />
+<label class="tree_label" for="c329">runtime.goready(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c330" />
+<label class="tree_label" for="c330">runtime.goready.func1(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c331" />
+<label class="tree_label" for="c331">runtime.ready(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c332" />
+<label class="tree_label" for="c332">github.com/containerd/containerd/runtime/restart/monitor.(*monitor).reconcile(50.000% 17/34)</label>
+<ul>
+<li>
+<input type="checkbox" id="c333" />
+<label class="tree_label" for="c333">github.com/containerd/containerd/runtime/restart/monitor.(*monitor).monitor(58.824% 10/17)</label>
+<ul>
+<li>
+<input type="checkbox" id="c334" />
+<label class="tree_label" for="c334">github.com/containerd/containerd.(*Client).Containers(70.000% 7/10)</label>
+<ul>
+<li>
+<input type="checkbox" id="c335" />
+<label class="tree_label" for="c335">github.com/containerd/containerd.(*remoteContainers).List(100.000% 7/7)</label>
+<ul>
+<li>
+<input type="checkbox" id="c336" />
+<label class="tree_label" for="c336">github.com/containerd/containerd.(*remoteContainers).stream(100.000% 7/7)</label>
+<ul>
+<li>
+<input type="checkbox" id="c337" />
+<label class="tree_label" for="c337">github.com/containerd/containerd/services/containers.(*local).ListStream(100.000% 7/7)</label>
+<ul>
+<li>
+<input type="checkbox" id="c338" />
+<label class="tree_label" for="c338">github.com/containerd/containerd/services/containers.(*local).withStoreView(100.000% 7/7)</label>
+<ul>
+<li>
+<input type="checkbox" id="c339" />
+<label class="tree_label" for="c339">github.com/containerd/containerd/vendor/go.etcd.io/bbolt.(*DB).View(100.000% 7/7)</label>
+<ul>
+<li>
+<input type="checkbox" id="c340" />
+<label class="tree_label" for="c340">github.com/containerd/containerd/services/containers.(*local).withStore.func1(85.714% 6/7)</label>
+<ul>
+<li>
+<input type="checkbox" id="c341" />
+<label class="tree_label" for="c341">github.com/containerd/containerd/services/containers.(*local).ListStream.func1(100.000% 6/6)</label>
+<ul>
+<li>
+<input type="checkbox" id="c342" />
+<label class="tree_label" for="c342">github.com/containerd/containerd/metadata.(*containerStore).List(100.000% 6/6)</label>
+<ul>
+<li>
+<input type="checkbox" id="c343" />
+<label class="tree_label" for="c343">github.com/containerd/containerd/metadata.view(100.000% 6/6)</label>
+<ul>
+<li>
+<input type="checkbox" id="c344" />
+<label class="tree_label" for="c344">github.com/containerd/containerd/metadata.(*containerStore).List.func1(100.000% 6/6)</label>
+<ul>
+<li>
+<input type="checkbox" id="c345" />
+<label class="tree_label" for="c345">github.com/containerd/containerd/vendor/go.etcd.io/bbolt.(*Bucket).ForEach(100.000% 6/6)</label>
+<ul>
+<li>
+<input type="checkbox" id="c346" />
+<label class="tree_label" for="c346">github.com/containerd/containerd/metadata.(*containerStore).List.func1.1(100.000% 6/6)</label>
+<ul>
+<li>
+<input type="checkbox" id="c347" />
+<label class="tree_label" for="c347">github.com/containerd/containerd/metadata.readContainer(83.333% 5/6)</label>
+<ul>
+<li>
+<input type="checkbox" id="c348" />
+<label class="tree_label" for="c348">github.com/containerd/containerd/vendor/go.etcd.io/bbolt.(*Bucket).ForEach(60.000% 3/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c349" />
+<label class="tree_label" for="c349">github.com/containerd/containerd/metadata.readContainer.func1(66.667% 2/3)</label>
+<ul>
+<li>
+<input type="checkbox" id="c350" />
+<label class="tree_label" for="c350">github.com/containerd/containerd/vendor/github.com/gogo/protobuf/proto.Unmarshal(50.000% 1/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c351" />
+<label class="tree_label" for="c351">github.com/containerd/containerd/vendor/github.com/gogo/protobuf/types.(*Any).XXX_Unmarshal(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c352" />
+<label class="tree_label" for="c352">github.com/containerd/containerd/vendor/github.com/gogo/protobuf/types.(*Any).Unmarshal(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c353" />
+<label class="tree_label" for="c353">runtime.growslice(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c354" />
+<label class="tree_label" for="c354">runtime.mallocgc(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c355" />
+<label class="tree_label" for="c355">runtime.profilealloc(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c356" />
+<label class="tree_label" for="c356">runtime.mProf_Malloc(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c357" />
+<label class="tree_label" for="c357">runtime.systemstack.abi0(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c358" />
+<label class="tree_label" for="c358">runtime.callers.func1(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c359" />
+<label class="tree_label" for="c359">github.com/containerd/containerd/metadata/boltutil.readMap(20.000% 1/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c360" />
+<label class="tree_label" for="c360">github.com/containerd/containerd/vendor/go.etcd.io/bbolt.(*Bucket).ForEach(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c361" />
+<label class="tree_label" for="c361">github.com/containerd/containerd/metadata/boltutil.readMap.func1(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c362" />
+<label class="tree_label" for="c362">runtime.mapassign_faststr(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c363" />
+<label class="tree_label" for="c363">github.com/containerd/containerd/metadata/boltutil.ReadTimestamps(20.000% 1/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c364" />
+<label class="tree_label" for="c364">github.com/containerd/containerd/vendor/go.etcd.io/bbolt.(*Bucket).Get(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c365" />
+<label class="tree_label" for="c365">github.com/containerd/containerd/vendor/go.etcd.io/bbolt.(*Cursor).seek(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c366" />
+<label class="tree_label" for="c366">github.com/containerd/containerd/vendor/go.etcd.io/bbolt.(*Cursor).search(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c367" />
+<label class="tree_label" for="c367">github.com/containerd/containerd/vendor/go.etcd.io/bbolt.(*Cursor).searchPage(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c368" />
+<label class="tree_label" for="c368">github.com/containerd/containerd/vendor/go.etcd.io/bbolt.(*Bucket).Bucket(16.667% 1/6)</label>
+<ul>
+<li>
+<input type="checkbox" id="c369" />
+<label class="tree_label" for="c369">github.com/containerd/containerd/vendor/go.etcd.io/bbolt.(*Cursor).seek(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c370" />
+<label class="tree_label" for="c370">github.com/containerd/containerd/vendor/go.etcd.io/bbolt.(*Cursor).search(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c371" />
+<label class="tree_label" for="c371">github.com/containerd/containerd/vendor/go.etcd.io/bbolt.(*Cursor).nsearch(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c372" />
+<label class="tree_label" for="c372">github.com/containerd/containerd/vendor/go.etcd.io/bbolt.(*DB).Begin(14.286% 1/7)</label>
+<ul>
+<li>
+<input type="checkbox" id="c373" />
+<label class="tree_label" for="c373">github.com/containerd/containerd/vendor/go.etcd.io/bbolt.(*DB).beginTx(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c374" />
+<label class="tree_label" for="c374">github.com/containerd/containerd/vendor/go.etcd.io/bbolt.(*Tx).init(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c375" />
+<label class="tree_label" for="c375">github.com/containerd/containerd/vendor/go.etcd.io/bbolt.(*DB).meta(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c376" />
+<label class="tree_label" for="c376">github.com/containerd/containerd/vendor/go.etcd.io/bbolt.(*meta).validate(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c377" />
+<label class="tree_label" for="c377">fmt.Sprintf(20.000% 2/10)</label>
+<ul>
+<li>
+<input type="checkbox" id="c378" />
+<label class="tree_label" for="c378">fmt.(*pp).doPrintf(50.000% 1/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c379" />
+<label class="tree_label" for="c379">fmt.(*pp).printArg(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c380" />
+<label class="tree_label" for="c380">fmt.(*pp).fmtString(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c381" />
+<label class="tree_label" for="c381">github.com/containerd/containerd.(*remoteNamespaces).List(23.529% 4/17)</label>
+<ul>
+<li>
+<input type="checkbox" id="c382" />
+<label class="tree_label" for="c382">github.com/containerd/containerd/services/namespaces.(*local).List(100.000% 4/4)</label>
+<ul>
+<li>
+<input type="checkbox" id="c383" />
+<label class="tree_label" for="c383">github.com/containerd/containerd/services/namespaces.(*local).withStoreView(100.000% 4/4)</label>
+<ul>
+<li>
+<input type="checkbox" id="c384" />
+<label class="tree_label" for="c384">github.com/containerd/containerd/vendor/go.etcd.io/bbolt.(*DB).View(75.000% 3/4)</label>
+<ul>
+<li>
+<input type="checkbox" id="c385" />
+<label class="tree_label" for="c385">github.com/containerd/containerd/services/namespaces.(*local).withStore.func1(100.000% 3/3)</label>
+<ul>
+<li>
+<input type="checkbox" id="c386" />
+<label class="tree_label" for="c386">github.com/containerd/containerd/services/namespaces.(*local).List.func1(100.000% 3/3)</label>
+<ul>
+<li>
+<input type="checkbox" id="c387" />
+<label class="tree_label" for="c387">github.com/containerd/containerd/metadata.(*namespaceStore).List(66.667% 2/3)</label>
+<ul>
+<li>
+<input type="checkbox" id="c388" />
+<label class="tree_label" for="c388">github.com/containerd/containerd/metadata.getBucket(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c389" />
+<label class="tree_label" for="c389">github.com/containerd/containerd/vendor/go.etcd.io/bbolt.(*Bucket).Bucket(50.000% 1/2)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c390" />
+<label class="tree_label" for="c390">github.com/containerd/containerd/metadata.(*namespaceStore).Labels(33.333% 1/3)</label>
+<ul>
+<li>
+<input type="checkbox" id="c391" />
+<label class="tree_label" for="c391">github.com/containerd/containerd/metadata.getBucket(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c392" />
+<label class="tree_label" for="c392">github.com/containerd/containerd/vendor/go.etcd.io/bbolt.(*Bucket).Bucket(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c393" />
+<label class="tree_label" for="c393">github.com/containerd/containerd/vendor/go.etcd.io/bbolt.(*Cursor).seek(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c394" />
+<label class="tree_label" for="c394">github.com/containerd/containerd/namespaces.WithNamespace(11.765% 2/17)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c395" />
+<label class="tree_label" for="c395">github.com/containerd/containerd/vendor/k8s.io/klog/v2.init.0.func1(1.947% 14/719)</label>
+<ul>
+<li>
+<input type="checkbox" id="c396" />
+<label class="tree_label" for="c396">github.com/containerd/containerd/vendor/k8s.io/klog/v2.(*loggingT).flushDaemon(85.714% 12/14)</label>
+<ul>
+<li>
+<input type="checkbox" id="c397" />
+<label class="tree_label" for="c397">runtime.chanrecv2(100.000% 12/12)</label>
+<ul>
+<li>
+<input type="checkbox" id="c398" />
+<label class="tree_label" for="c398">runtime.chanrecv(100.000% 12/12)</label>
+<ul>
+<li>
+<input type="checkbox" id="c399" />
+<label class="tree_label" for="c399">runtime.mcall(100.000% 12/12)</label>
+<ul>
+<li>
+<input type="checkbox" id="c400" />
+<label class="tree_label" for="c400">runtime.park_m(100.000% 12/12)</label>
+<ul>
+<li>
+<input type="checkbox" id="c401" />
+<label class="tree_label" for="c401">runtime.schedule(100.000% 12/12)</label>
+<ul>
+<li>
+<input type="checkbox" id="c402" />
+<label class="tree_label" for="c402">runtime.findrunnable(83.333% 10/12)</label>
+<ul>
+<li>
+<input type="checkbox" id="c403" />
+<label class="tree_label" for="c403">runtime.epollwait.abi0(30.000% 3/10)</label>
+<ul>
+<li>
+<input type="checkbox" id="c404" />
+<label class="tree_label" for="c404">entry_SYSCALL_64_after_hwframe(100.000% 3/3)</label>
+<ul>
+<li>
+<input type="checkbox" id="c405" />
+<label class="tree_label" for="c405">do_syscall_64(100.000% 3/3)</label>
+<ul>
+<li>
+<input type="checkbox" id="c406" />
+<label class="tree_label" for="c406">__x64_sys_epoll_pwait(100.000% 3/3)</label>
+<ul>
+<li>
+<input type="checkbox" id="c407" />
+<label class="tree_label" for="c407">do_epoll_wait(100.000% 3/3)</label>
+<ul>
+<li>
+<input type="checkbox" id="c408" />
+<label class="tree_label" for="c408">schedule_hrtimeout_range_clock(66.667% 2/3)</label>
+<ul>
+<li>
+<input type="checkbox" id="c409" />
+<label class="tree_label" for="c409">schedule(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c410" />
+<label class="tree_label" for="c410">__schedule(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c411" />
+<label class="tree_label" for="c411">finish_task_switch(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c412" />
+<label class="tree_label" for="c412">asm_sysvec_apic_timer_interrupt(50.000% 1/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c413" />
+<label class="tree_label" for="c413">sysvec_apic_timer_interrupt(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c414" />
+<label class="tree_label" for="c414">irq_exit_rcu(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c415" />
+<label class="tree_label" for="c415">do_softirq_own_stack(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c416" />
+<label class="tree_label" for="c416">asm_call_sysvec_on_stack(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c417" />
+<label class="tree_label" for="c417">__softirqentry_text_start(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c418" />
+<label class="tree_label" for="c418">__run_timers.part.0(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c419" />
+<label class="tree_label" for="c419">__fget_light(33.333% 1/3)</label>
+<ul>
+<li>
+<input type="checkbox" id="c420" />
+<label class="tree_label" for="c420">__fget_files(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c421" />
+<label class="tree_label" for="c421">runtime.stopm(10.000% 1/10)</label>
+<ul>
+<li>
+<input type="checkbox" id="c422" />
+<label class="tree_label" for="c422">runtime.notesleep(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c423" />
+<label class="tree_label" for="c423">runtime.futex.abi0(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c424" />
+<label class="tree_label" for="c424">entry_SYSCALL_64_after_hwframe(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c425" />
+<label class="tree_label" for="c425">do_syscall_64(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c426" />
+<label class="tree_label" for="c426">__x64_sys_futex(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c427" />
+<label class="tree_label" for="c427">do_futex(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c428" />
+<label class="tree_label" for="c428">futex_wait(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c429" />
+<label class="tree_label" for="c429">futex_wait_queue_me(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c430" />
+<label class="tree_label" for="c430">schedule(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c431" />
+<label class="tree_label" for="c431">__schedule(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c432" />
+<label class="tree_label" for="c432">finish_task_switch(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c433" />
+<label class="tree_label" for="c433">runtime.netpollBreak(10.000% 1/10)</label>
+<ul>
+<li>
+<input type="checkbox" id="c434" />
+<label class="tree_label" for="c434">runtime.write1.abi0(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c435" />
+<label class="tree_label" for="c435">entry_SYSCALL_64_after_hwframe(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c436" />
+<label class="tree_label" for="c436">do_syscall_64(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c437" />
+<label class="tree_label" for="c437">ksys_write(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c438" />
+<label class="tree_label" for="c438">vfs_write(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c439" />
+<label class="tree_label" for="c439">new_sync_write(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c440" />
+<label class="tree_label" for="c440">pipe_write(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c441" />
+<label class="tree_label" for="c441">file_update_time(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c442" />
+<label class="tree_label" for="c442">runtime.checkTimers(10.000% 1/10)</label>
+<ul>
+<li>
+<input type="checkbox" id="c443" />
+<label class="tree_label" for="c443">runtime.runtimer(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c444" />
+<label class="tree_label" for="c444">runtime.runOneTimer(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c445" />
+<label class="tree_label" for="c445">runtime.acquirep(10.000% 1/10)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c446" />
+<label class="tree_label" for="c446">runtime.resetspinning(16.667% 2/12)</label>
+<ul>
+<li>
+<input type="checkbox" id="c447" />
+<label class="tree_label" for="c447">runtime.wakep(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c448" />
+<label class="tree_label" for="c448">runtime.startm(50.000% 1/2)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c449" />
+<label class="tree_label" for="c449">runtime.mstart.abi0(24.061% 237/985)</label>
+<ul>
+<li>
+<input type="checkbox" id="c450" />
+<label class="tree_label" for="c450">runtime.mstart0(100.000% 237/237)</label>
+<ul>
+<li>
+<input type="checkbox" id="c451" />
+<label class="tree_label" for="c451">runtime.mstart1(100.000% 237/237)</label>
+<ul>
+<li>
+<input type="checkbox" id="c452" />
+<label class="tree_label" for="c452">runtime.sysmon(81.013% 192/237)</label>
+<ul>
+<li>
+<input type="checkbox" id="c453" />
+<label class="tree_label" for="c453">runtime.notetsleep(47.917% 92/192)</label>
+<ul>
+<li>
+<input type="checkbox" id="c454" />
+<label class="tree_label" for="c454">runtime.notetsleep_internal(90.217% 83/92)</label>
+<ul>
+<li>
+<input type="checkbox" id="c455" />
+<label class="tree_label" for="c455">runtime.futex.abi0(69.880% 58/83)</label>
+<ul>
+<li>
+<input type="checkbox" id="c456" />
+<label class="tree_label" for="c456">entry_SYSCALL_64_after_hwframe(100.000% 58/58)</label>
+<ul>
+<li>
+<input type="checkbox" id="c457" />
+<label class="tree_label" for="c457">do_syscall_64(100.000% 58/58)</label>
+<ul>
+<li>
+<input type="checkbox" id="c458" />
+<label class="tree_label" for="c458">__x64_sys_futex(87.931% 51/58)</label>
+<ul>
+<li>
+<input type="checkbox" id="c459" />
+<label class="tree_label" for="c459">do_futex(90.196% 46/51)</label>
+<ul>
+<li>
+<input type="checkbox" id="c460" />
+<label class="tree_label" for="c460">futex_wait(95.652% 44/46)</label>
+<ul>
+<li>
+<input type="checkbox" id="c461" />
+<label class="tree_label" for="c461">futex_wait_queue_me(45.455% 20/44)</label>
+<ul>
+<li>
+<input type="checkbox" id="c462" />
+<label class="tree_label" for="c462">schedule(85.000% 17/20)</label>
+<ul>
+<li>
+<input type="checkbox" id="c463" />
+<label class="tree_label" for="c463">__schedule(88.235% 15/17)</label>
+<ul>
+<li>
+<input type="checkbox" id="c464" />
+<label class="tree_label" for="c464">finish_task_switch(93.333% 14/15)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c465" />
+<label class="tree_label" for="c465">plist_add(10.000% 2/20)</label>
+<ul>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c466" />
+<label class="tree_label" for="c466">_raw_spin_unlock_irqrestore(5.000% 1/20)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c467" />
+<label class="tree_label" for="c467">futex_wait_setup(22.727% 10/44)</label>
+<ul>
+<li>
+<input type="checkbox" id="c468" />
+<label class="tree_label" for="c468">hash_futex(20.000% 2/10)</label>
+<ul>
+<li>
+<input type="checkbox" id="c469" />
+<label class="tree_label" for="c469">asm_sysvec_apic_timer_interrupt(50.000% 1/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c470" />
+<label class="tree_label" for="c470">sysvec_apic_timer_interrupt(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c471" />
+<label class="tree_label" for="c471">irq_exit_rcu(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c472" />
+<label class="tree_label" for="c472">do_softirq_own_stack(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c473" />
+<label class="tree_label" for="c473">asm_call_sysvec_on_stack(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c474" />
+<label class="tree_label" for="c474">__softirqentry_text_start(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c475" />
+<label class="tree_label" for="c475">__get_user_nocheck_4(20.000% 2/10)</label>
+<ul>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c476" />
+<label class="tree_label" for="c476">get_futex_key(10.000% 1/10)</label>
+<ul>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c477" />
+<label class="tree_label" for="c477">_raw_spin_lock(10.000% 1/10)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c478" />
+<label class="tree_label" for="c478">__unqueue_futex(11.364% 5/44)</label>
+<ul>
+<li>
+<input type="checkbox" id="c479" />
+<label class="tree_label" for="c479">plist_del(100.000% 5/5)</label>
+<ul>
+<li>
+<input type="checkbox" id="c480" />
+<label class="tree_label" for="c480">__list_del_entry_valid(60.000% 3/5)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c481" />
+<label class="tree_label" for="c481">hrtimer_init_sleeper(6.818% 3/44)</label>
+<ul>
+<li>
+<input type="checkbox" id="c482" />
+<label class="tree_label" for="c482">__hrtimer_init(100.000% 3/3)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c483" />
+<label class="tree_label" for="c483">_raw_spin_lock(6.818% 3/44)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c484" />
+<label class="tree_label" for="c484">ktime_get(3.922% 2/51)</label>
+<ul>
+<li>
+<input type="checkbox" id="c485" />
+<label class="tree_label" for="c485">kvm_clock_get_cycles(50.000% 1/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c486" />
+<label class="tree_label" for="c486">pvclock_clocksource_read(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c487" />
+<label class="tree_label" for="c487">__x86_retpoline_rax(50.000% 1/2)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c488" />
+<label class="tree_label" for="c488">get_timespec64(3.922% 2/51)</label>
+<ul>
+<li>
+<input type="checkbox" id="c489" />
+<label class="tree_label" for="c489">_copy_from_user(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c490" />
+<label class="tree_label" for="c490">copy_user_generic_string(50.000% 1/2)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c491" />
+<label class="tree_label" for="c491">syscall_enter_from_user_mode(8.621% 5/58)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c492" />
+<label class="tree_label" for="c492">runtime.usleep.abi0(29.167% 56/192)</label>
+<ul>
+<li>
+<input type="checkbox" id="c493" />
+<label class="tree_label" for="c493">entry_SYSCALL_64_after_hwframe(100.000% 56/56)</label>
+<ul>
+<li>
+<input type="checkbox" id="c494" />
+<label class="tree_label" for="c494">do_syscall_64(98.214% 55/56)</label>
+<ul>
+<li>
+<input type="checkbox" id="c495" />
+<label class="tree_label" for="c495">__x64_sys_nanosleep(87.273% 48/55)</label>
+<ul>
+<li>
+<input type="checkbox" id="c496" />
+<label class="tree_label" for="c496">hrtimer_nanosleep(83.333% 40/48)</label>
+<ul>
+<li>
+<input type="checkbox" id="c497" />
+<label class="tree_label" for="c497">do_nanosleep(97.500% 39/40)</label>
+<ul>
+<li>
+<input type="checkbox" id="c498" />
+<label class="tree_label" for="c498">schedule(79.487% 31/39)</label>
+<ul>
+<li>
+<input type="checkbox" id="c499" />
+<label class="tree_label" for="c499">__schedule(96.774% 30/31)</label>
+<ul>
+<li>
+<input type="checkbox" id="c500" />
+<label class="tree_label" for="c500">finish_task_switch(96.667% 29/30)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c501" />
+<label class="tree_label" for="c501">_raw_spin_unlock_irqrestore(15.385% 6/39)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c502" />
+<label class="tree_label" for="c502">get_timespec64(16.667% 8/48)</label>
+<ul>
+<li>
+<input type="checkbox" id="c503" />
+<label class="tree_label" for="c503">_copy_from_user(75.000% 6/8)</label>
+<ul>
+<li>
+<input type="checkbox" id="c504" />
+<label class="tree_label" for="c504">copy_user_generic_string(50.000% 3/6)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c505" />
+<label class="tree_label" for="c505">syscall_enter_from_user_mode(3.636% 2/55)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c506" />
+<label class="tree_label" for="c506">syscall_exit_to_user_mode(1.786% 1/56)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c507" />
+<label class="tree_label" for="c507">runtime.timeSleepUntil(1.562% 3/192)</label>
+<ul>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c508" />
+<label class="tree_label" for="c508">runtime.retake(1.042% 2/192)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c509" />
+<label class="tree_label" for="c509">entry_SYSCALL_64_after_hwframe(2.132% 21/985)</label>
+<ul>
+<li>
+<input type="checkbox" id="c510" />
+<label class="tree_label" for="c510">do_syscall_64(100.000% 21/21)</label>
+<ul>
+<li>
+<input type="checkbox" id="c511" />
+<label class="tree_label" for="c511">__x64_sys_futex(66.667% 14/21)</label>
+<ul>
+<li>
+<input type="checkbox" id="c512" />
+<label class="tree_label" for="c512">do_futex(100.000% 14/14)</label>
+<ul>
+<li>
+<input type="checkbox" id="c513" />
+<label class="tree_label" for="c513">futex_wake(71.429% 10/14)</label>
+<ul>
+<li>
+<input type="checkbox" id="c514" />
+<label class="tree_label" for="c514">wake_up_q(100.000% 10/10)</label>
+<ul>
+<li>
+<input type="checkbox" id="c515" />
+<label class="tree_label" for="c515">try_to_wake_up(100.000% 10/10)</label>
+<ul>
+<li>
+<input type="checkbox" id="c516" />
+<label class="tree_label" for="c516">_raw_spin_unlock_irqrestore(100.000% 10/10)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c517" />
+<label class="tree_label" for="c517">futex_wait(28.571% 4/14)</label>
+<ul>
+<li>
+<input type="checkbox" id="c518" />
+<label class="tree_label" for="c518">futex_wait_queue_me(75.000% 3/4)</label>
+<ul>
+<li>
+<input type="checkbox" id="c519" />
+<label class="tree_label" for="c519">schedule(100.000% 3/3)</label>
+<ul>
+<li>
+<input type="checkbox" id="c520" />
+<label class="tree_label" for="c520">__schedule(100.000% 3/3)</label>
+<ul>
+<li>
+<input type="checkbox" id="c521" />
+<label class="tree_label" for="c521">finish_task_switch(100.000% 3/3)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c522" />
+<label class="tree_label" for="c522">futex_wait_setup(25.000% 1/4)</label>
+<ul>
+<li>
+<input type="checkbox" id="c523" />
+<label class="tree_label" for="c523">__get_user_nocheck_4(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c524" />
+<label class="tree_label" for="c524">__x64_sys_madvise(9.524% 2/21)</label>
+<ul>
+<li>
+<input type="checkbox" id="c525" />
+<label class="tree_label" for="c525">do_madvise.part.0(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c526" />
+<label class="tree_label" for="c526">zap_page_range(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c527" />
+<label class="tree_label" for="c527">tlb_finish_mmu(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c528" />
+<label class="tree_label" for="c528">release_pages(50.000% 1/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c529" />
+<label class="tree_label" for="c529">free_unref_page_list(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c530" />
+<label class="tree_label" for="c530">free_pages_and_swap_cache(50.000% 1/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c531" />
+<label class="tree_label" for="c531">lru_add_drain(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c532" />
+<label class="tree_label" for="c532">lru_add_drain_cpu(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c533" />
+<label class="tree_label" for="c533">__x64_sys_epoll_pwait(9.524% 2/21)</label>
+<ul>
+<li>
+<input type="checkbox" id="c534" />
+<label class="tree_label" for="c534">do_epoll_wait(100.000% 2/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c535" />
+<label class="tree_label" for="c535">schedule_hrtimeout_range_clock(50.000% 1/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c536" />
+<label class="tree_label" for="c536">schedule(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c537" />
+<label class="tree_label" for="c537">__schedule(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c538" />
+<label class="tree_label" for="c538">finish_task_switch(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c539" />
+<label class="tree_label" for="c539">__fget_light(50.000% 1/2)</label>
+<ul>
+<li>
+<input type="checkbox" id="c540" />
+<label class="tree_label" for="c540">__fget_files(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c541" />
+<label class="tree_label" for="c541">__x64_sys_tgkill(4.762% 1/21)</label>
+<ul>
+<li>
+<input type="checkbox" id="c542" />
+<label class="tree_label" for="c542">do_tkill(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c543" />
+<label class="tree_label" for="c543">do_send_specific(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c544" />
+<label class="tree_label" for="c544">do_send_sig_info(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c545" />
+<label class="tree_label" for="c545">_raw_spin_unlock_irqrestore(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c546" />
+<label class="tree_label" for="c546">__x64_sys_sched_yield(4.762% 1/21)</label>
+<ul>
+<li>
+<input type="checkbox" id="c547" />
+<label class="tree_label" for="c547">do_sched_yield(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="c548" />
+<label class="tree_label" for="c548">__x64_sys_nanosleep(4.762% 1/21)</label>
+<ul>
+<li>
+<input type="checkbox" id="c549" />
+<label class="tree_label" for="c549">hrtimer_nanosleep(100.000% 1/1)</label>
+<ul>
+<li>
+<input type="checkbox" id="c550" />
+<label class="tree_label" for="c550">do_nanosleep(100.000% 1/1)</label>
+<ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
