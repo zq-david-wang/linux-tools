@@ -43,6 +43,7 @@ void int_exit(int s) {
     }
     res.clear();
     alive=0;
+    exit(0);
 }
 
 char *func = NULL;
@@ -147,8 +148,8 @@ int main(int argc, char *argv[]) {
     unsigned long long head;
     struct perf_event_mmap_page *mp;
     while (poll(polls, k, -1)>0) {
-        if (!alive) break;
         for (i=0; i<k; i++) {
+            if (!alive) break;
             if ((polls[i].revents&POLLIN)==0) continue;
             fd = polls[i].fd;
             addr = res[fd].first;

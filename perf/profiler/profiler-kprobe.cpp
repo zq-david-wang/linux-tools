@@ -135,6 +135,7 @@ void parse_elf64(FILE *fp, unsigned long long v_addr, unsigned long long v_size,
                     rc = fseek(fp, headers[link].sh_offset+ix, SEEK_SET); if (rc<0) continue;
                     if (fgets(fname, sizeof(fname), fp)==NULL) continue;
                     faddr = faddr-p_vaddr+v_addr;
+                    // printf("0x%llx +%lld > %s\n", faddr, fsize, fname);
                     store[faddr] = make_pair(string(fname), fsize);
                 }
                 break;
@@ -159,6 +160,8 @@ int load_symbol_from_file(const char *path, unsigned long long addr, unsigned lo
         printf("32bit elf not supported yet\n"); err=-2; goto end;
     } else if (c == ELFCLASS64) {
         parse_elf64(fp, addr, size, offset, store);
+    } else {
+        printf("unknown elf type %d\n", c);
     }
 
 end:
@@ -186,14 +189,15 @@ static unsigned long long parse_hex(char *p, int *n) {
     return r;
 }
 
-STORE_T*  load_symbol_pid(int pid) {
+STORE_T*  load_symbol_pid(int pid, STORE_T* in) {
     printf("loading symbols for %d\n", pid);
     char bb[128];
     sprintf(bb, "/proc/%d/maps", pid);
     FILE* fp = fopen(bb, "r");
     if (fp==NULL) return NULL;
-    STORE_T *store = new STORE_T();
-    unsigned long long start, end, offset;
+    STORE_T *store = in;
+    unsigned long long start, end, offset=0;
+    if (store==NULL) store=new STORE_T();
     char *p;
     int i, c, j;
     while(1) {
@@ -239,6 +243,7 @@ static long perf_event_open(struct perf_event_attr *perf_event, pid_t pid, int c
     return syscall(__NR_perf_event_open, perf_event, pid, cpu, group_fd, flags);
 }
 unordered_map<int, STORE_T*> pid_symbols;
+unordered_map<int, pair<string,string>> pid_infos;
 K_STORE_T* kernel_symbols = NULL;
 
 struct pollfd polls[MAXCPU];
@@ -246,8 +251,10 @@ struct pollfd polls[MAXCPU];
 static long long psize;
 map<int, pair<void*, long long>> res;
 TNode* gnode = NULL;
+int exiting = 0;
 
-void int_exit(int _) {
+void int_exit(int x) {
+    exiting = 1;
     for (auto x: res) {
         auto y = x.second;
         void* addr = y.first;
@@ -267,7 +274,7 @@ void int_exit(int _) {
         }
         gnode = NULL;
     }
-    exit(0);
+    exit(x);
 }
 /*
 perf call chain process
@@ -290,10 +297,31 @@ int process_event(char *base, unsigned long long size, unsigned long long offset
         if (gnode==NULL) gnode=new TNode();
         char bb[64];
         TNode* r = gnode;
-        if (pid_symbols.count(pid)==0) pid_symbols[pid] = load_symbol_pid(pid);
+        if (pid_symbols.count(pid)==0) {
+            pid_symbols[pid] = load_symbol_pid(pid, NULL);
+            // load command
+            char b[128];
+            char comm[128]="NA";
+            char host[128]="NA";
+            sprintf(b, "/proc/%d/comm", pid);
+            FILE* fp = fopen(b, "r");
+            if (fp) {
+                fscanf(fp, "%s", comm);
+                fclose(fp);
+            }
+            sprintf(b, "/proc/%d/root/etc/hostname", pid);
+            fp = fopen(b, "r");
+            if (fp) {
+                fscanf(fp, "%s", host);
+                fclose(fp);
+            }
+            pid_infos[pid]=make_pair(string(comm), string(host));
+        }
         STORE_T* px = pid_symbols[pid];
         addr0 = *((unsigned long long *)(base+offset));
         char user_mark = 0;
+        char need_reload= 0;
+        auto  pinfo = pid_infos[pid];
         for (int i=nr-1; i>=0; i--) {
             o = i*8+offset; if (o>=size) o-=size;
             addr = *((unsigned long long*)(base+o));
@@ -305,35 +333,32 @@ int process_event(char *base, unsigned long long size, unsigned long long offset
                     auto x = kernel_symbols->upper_bound(addr);
                     if (x==kernel_symbols->begin()) {
                         // sprintf(bb, "0x%llx", addr); r = r->add(string(bb));
-                        r = r->add(string("unknown"));
                     } else {
                         x--;
                         r = r->add((*x).second);
                     }
                 } else {
                     // sprintf(bb, "0x%llx", addr); r = r->add(string(bb));
-                    r = r->add(string("unknown"));
                 }
             } else {
                 if (px) {
                     auto x = px->upper_bound(addr);
                     if (x==px->begin()) {
                         // sprintf(bb, "0x%llx", addr); r = r->add(string(bb));
-                        r = r->add(string("unknown"));
+                        r = r->add(string("unknwon[")+pinfo.first+'@'+pinfo.second+"]");
                     } else {
                         x--;
                         auto y = (*x).second;
                         if (addr>(*x).first+y.second) {
                             // r = r->add(y.first);
                             // sprintf(bb, "0x%llx", addr); r = r->add(string(bb));
-                            r = r->add(string("unknown"));
+                            r = r->add(string("unknwon[")+pinfo.first+'@'+pinfo.second+"]");
                         } else {
-                            r = r->add(y.first);
+                            r = r->add(y.first+"["+pinfo.first+'@'+pinfo.second+"]");
                         }
                     }
                 } else {
                     // sprintf(bb, "0x%llx", addr); r = r->add(string(bb));
-                    r = r->add(string("unknown"));
                 }
                 user_mark=1;
             }
@@ -344,57 +369,33 @@ int process_event(char *base, unsigned long long size, unsigned long long offset
 
 int main(int argc, char *argv[]) {
     kernel_symbols = load_kernel();
-    if (argc<2) { printf("Need pid\n"); return 1; }
-    int pid = atoi(argv[1]); if (pid<=0) { printf("invalid pid %s\n", argv[1]); return 1; }
-    // find cgroup
-    char xb[256], xb2[256];
-    int i, j, k, fd;
-    void* addr;
-    sprintf(xb, "/proc/%d/cgroup", pid);
-    FILE* fp = fopen(xb, "r");
-    if (fp==NULL) error("fail to open cgroup file");
-    char *p;
-    xb2[0]=0;
-    int cgroup_name_len=0;
-    while(1) {
-        p = fgets(xb, sizeof(xb), fp); if (p==NULL) break;
-        i=0; while(p[i]&&p[i]!=':') i++; if (p[i]==0) continue; 
-        if (strstr(p, "perf_event")) {
-            i++; while(p[i]!=':'&&p[i]) i++;  if (p[i]!=':') continue; i++;
-            j=i; while(p[j]!='\r'&&p[j]!='\n'&&p[j]!=0) j++; p[j]=0;
-            sprintf(xb2, "/sys/fs/cgroup/perf_event%s", p+i);
-            cgroup_name_len=j-i;
-            break;
-        } else if (p[i+1]==':') {
-            i+=2; j=i; while(p[j]!='\r'&&p[j]!='\n'&&p[j]!=0) j++; p[j]=0;
-            sprintf(xb2, "/sys/fs/cgroup/%s", p+i);
-            cgroup_name_len=j-i;
-        }
-    }
+    if (argc<2) { printf("Need kprobe function name, e.g. %s <some rarely called kernel function>\n", argv[0]); return 1; }
+    int type;
+    char *func = argv[1];
+    FILE *fp = fopen("/sys/bus/event_source/devices/kprobe/type", "r");
+    if (fp == NULL) { printf("fail to find type for kprobe\n"); return 1; }
+    type = 0;
+    fscanf(fp, "%d", &type);
     fclose(fp);
-    if (xb2[0]==0) error("no proper cgroup found\n");
-    if (cgroup_name_len<2) {
-        printf("cgroup %s seems to be root, not allowed\n", xb2);
-        return -1;
-    }
-    printf("try to use cgroup %s\n", xb2);
-    int cgroup_id = open(xb2, O_CLOEXEC);
-    if (cgroup_id<=0) { perror("error open cgroup dir"); return 1; }
+    if (type <= 0) { printf("unexpected type %d\n", type); return 1; }
     // start perf event
     psize = sysconf(_SC_PAGE_SIZE); // getpagesize();
     int cpu_num = sysconf(_SC_NPROCESSORS_ONLN);
 	struct perf_event_attr attr;
     memset(&attr, 0, sizeof(attr));
-    attr.type = PERF_TYPE_SOFTWARE;
+    attr.type = type;
     attr.size = sizeof(attr);
-    attr.config = PERF_COUNT_SW_CPU_CLOCK;
-    attr.sample_freq = 369; // adjust it
-    attr.freq = 1;
-    attr.wakeup_events = 32;
+    attr.config = 0; // (1<<0) for kreprobe
+    attr.sample_period = 2;
+    attr.wakeup_events = 2;
     attr.sample_type = PERF_SAMPLE_TID|PERF_SAMPLE_CALLCHAIN;
+    attr.kprobe_func = (__u64)func; // "do_sys_open"; // "bprm_execve";
+    attr.probe_offset = 0;
+    int fd, i, k;
+    void* addr;
     for (i=0, k=0; i<cpu_num&&i<MAXCPU; i++) {
         printf("attaching cpu %d\n", i);
-        fd = perf_event_open(&attr, cgroup_id, i, -1, PERF_FLAG_FD_CLOEXEC|PERF_FLAG_PID_CGROUP);
+        fd = perf_event_open(&attr, -1, i, -1, PERF_FLAG_FD_CLOEXEC);
         if (fd<0) { perror("fail to open perf event"); continue; }
         addr = mmap(NULL, (1+MAXN)*psize, PROT_READ, MAP_SHARED, fd, 0);
         if (addr == MAP_FAILED) { perror("mmap failed"); close(fd); continue; }
@@ -412,8 +413,8 @@ int main(int argc, char *argv[]) {
     unsigned long long head;
     struct perf_event_mmap_page *mp;
     while (poll(polls, k, -1)>0) {
-        // printf("wake\n");
         for (i=0; i<k; i++) {
+            if (exiting) break;
             if ((polls[i].revents&POLLIN)==0) continue;
             fd = polls[i].fd;
             addr = res[fd].first;
