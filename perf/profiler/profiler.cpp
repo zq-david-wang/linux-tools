@@ -330,15 +330,20 @@ int process_event(char *base, unsigned long long size, unsigned long long offset
                     auto x = px->upper_bound(addr);
                     if (x==px->begin()) {
                         // sprintf(bb, "0x%llx", addr); r = r->add(string(bb));
-                        r = r->add(string("unknown"));
-                        unknowns[addr] = "totally lost";
+                        auto y = (*x).second;
+                        r = r->add(y.first+"?");
                     } else {
                         x--;
                         auto y = (*x).second;
                         if (y.second && addr>(*x).first+y.second) {
                             // r = r->add(y.first);
                             // sprintf(bb, "0x%llx", addr); r = r->add(string(bb));
-                            r = r->add(y.first+"?");
+                            x++;
+                            if (x==px->end()) r = r->add(y.first+"??");
+                            else {
+                                auto y = (*x).second;
+                                r = r->add(y.first+"?");
+                            }
                         } else {
                             r = r->add(y.first);
                         }
