@@ -17,12 +17,13 @@
 #include <string>
 #include <map>
 #include <unordered_map>
+#include <unordered_set>
 #include <algorithm>
 using namespace std;
 
 
-#define MAXN  128
-#define MAXCPU 1024
+#define MAXN  512
+#define MAXCPU 128
 #define error(msg) do { perror(msg); exit(1); } while(0)
 //--------------------------------Tree for call chain and report-------------------------------
 //
@@ -129,13 +130,15 @@ void parse_elf64(FILE *fp, unsigned long long v_addr, unsigned long long v_size,
                     rc = fread(&symb, sizeof(symb), 1, fp); if (rc != 1) continue;
                     if (ELF64_ST_TYPE(symb.st_info) != STT_FUNC ) continue;
                     flink = symb.st_shndx; if (flink==0) continue;
-                    fsize = symb.st_size; if (fsize==0) continue;
+                    fsize = symb.st_size; // if (fsize==0) continue;
                     faddr = symb.st_value; if (faddr>p_vaddr+p_size) continue;
                     ix = symb.st_name; if (ix==0) continue;
                     rc = fseek(fp, headers[link].sh_offset+ix, SEEK_SET); if (rc<0) continue;
                     if (fgets(fname, sizeof(fname), fp)==NULL) continue;
                     faddr = faddr-p_vaddr+v_addr;
-                    store[faddr] = make_pair(string(fname), fsize);
+                    if (store.count(faddr)) {
+                        if (store[faddr].second<fsize) store[faddr] = make_pair(string(fname), fsize);
+                    } else store[faddr] = make_pair(string(fname), fsize);
                 }
                 break;
             default:
@@ -188,26 +191,27 @@ static unsigned long long parse_hex(char *p, int *n) {
 
 STORE_T*  load_symbol_pid(int pid) {
     printf("loading symbols for %d\n", pid);
-    char bb[128];
+    char bb[256];
     sprintf(bb, "/proc/%d/maps", pid);
     FILE* fp = fopen(bb, "r");
     if (fp==NULL) return NULL;
     STORE_T *store = new STORE_T();
-    unsigned long long start, end, offset;
+    unsigned long long start, end, offset, inode;
     char *p;
     int i, c, j;
+    char fname[128], xx[64], xxx[32], mod[16], idx[16];
     while(1) {
         p=fgets(bb, sizeof(bb), fp); if (p==NULL) break;
+        if (sscanf(p, "%s %s %s %s %lld %s", xx, mod, xxx, idx, &inode, fname)!=6) continue;
         i=0; c=0;
-        start = parse_hex(p, &c); if (start==0) continue; i+=c; if (p[i]!='-') continue; i++;
-        end = parse_hex(p+i, &c); if (end==0) continue; i+=c;
+        start = parse_hex(xx, &c); if (c==0) continue; i+=c; if (p[i]!='-') continue; i++;
+        end = parse_hex(xx+i, &c); if (c==0) continue;
         // parse type
-        for (j=0; j<8; j++) { if (p[i]=='x') break; i++; } if (j>=8) continue;
-        while(p[i]!=' '&&p[i]!='\t'&&p[i]!=0) i++; if (p[i]==0) continue;
-        offset = parse_hex(p+i, &c); if (c==0) continue;
+        for (j=0; j<8; j++) if (mod[j]=='x') break; if (j>=8) continue;
+        if (fname[0]!='/') continue;
+        offset = parse_hex(xxx, &c); if (c==0) continue;
         // remaining should contains '/' indicating this mmap is refering to a file
-        while(p[i]&&p[i]!='/') i++; if (p[i]==0) continue;
-        sprintf(bb, "/proc/%d/map_files/%llx-%llx", pid, start, end);
+        sprintf(bb, "/proc/%d/root%s", pid, fname);
         load_symbol_from_file(bb, start, end-start, offset, *store);
     }
     fclose(fp);
@@ -247,6 +251,7 @@ static long long psize;
 map<int, pair<void*, long long>> res;
 TNode* gnode = NULL;
 
+unordered_map<unsigned long long, string> unknowns;
 void int_exit(int _) {
     for (auto x: res) {
         auto y = x.second;
@@ -267,6 +272,10 @@ void int_exit(int _) {
         }
         gnode = NULL;
     }
+    printf("---------------------unknowns-----------------\n");
+    for (auto x=unknowns.begin(); x!=unknowns.end(); x++) {
+        printf("0x%llx  --?>  %s\n", (*x).first, (*x).second.c_str());
+    }
     exit(0);
 }
 /*
@@ -285,6 +294,7 @@ int process_event(char *base, unsigned long long size, unsigned long long offset
     // pid, tip;
     pid = *((int *)(base+offset));  offset+=8; if (offset>=size) offset-=size;
     unsigned long long nr = *((unsigned long long*)(base+offset)); offset+=8; if (offset>=size) offset-=size;
+    if (nr>128) return -1;
     unsigned long long addr, o, addr0;
     if (nr) {
         if (gnode==NULL) gnode=new TNode();
@@ -297,6 +307,7 @@ int process_event(char *base, unsigned long long size, unsigned long long offset
         for (int i=nr-1; i>=0; i--) {
             o = i*8+offset; if (o>=size) o-=size;
             addr = *((unsigned long long*)(base+o));
+            if (addr==0) continue; // something wrong?
             if ((addr>>56)==(addr0>>56) && (p->misc&PERF_RECORD_MISC_KERNEL)) {
                 // skip the cross line command, no idear how to correctly resolve it now.
                 if (user_mark) { user_mark=0; continue; }
@@ -320,20 +331,22 @@ int process_event(char *base, unsigned long long size, unsigned long long offset
                     if (x==px->begin()) {
                         // sprintf(bb, "0x%llx", addr); r = r->add(string(bb));
                         r = r->add(string("unknown"));
+                        unknowns[addr] = "totally lost";
                     } else {
                         x--;
                         auto y = (*x).second;
-                        if (addr>(*x).first+y.second) {
+                        if (y.second && addr>(*x).first+y.second) {
                             // r = r->add(y.first);
                             // sprintf(bb, "0x%llx", addr); r = r->add(string(bb));
-                            r = r->add(string("unknown"));
+                            r = r->add(y.first+"?");
                         } else {
                             r = r->add(y.first);
                         }
                     }
                 } else {
                     // sprintf(bb, "0x%llx", addr); r = r->add(string(bb));
-                    r = r->add(string("unknown"));
+                    // r = r->add(string("unknown"));
+                    unknowns[addr] = "no pid symbol";
                 }
                 user_mark=1;
             }
@@ -388,9 +401,9 @@ int main(int argc, char *argv[]) {
     attr.type = PERF_TYPE_SOFTWARE;
     attr.size = sizeof(attr);
     attr.config = PERF_COUNT_SW_CPU_CLOCK;
-    attr.sample_freq = 369; // adjust it
+    attr.sample_freq = 777; // adjust it
     attr.freq = 1;
-    attr.wakeup_events = 32;
+    attr.wakeup_events = 16;
     attr.sample_type = PERF_SAMPLE_TID|PERF_SAMPLE_CALLCHAIN;
     for (i=0, k=0; i<cpu_num&&i<MAXCPU; i++) {
         printf("attaching cpu %d\n", i);
@@ -410,6 +423,7 @@ int main(int argc, char *argv[]) {
 	signal(SIGTERM, int_exit);
 
     unsigned long long head;
+    int event_size;
     struct perf_event_mmap_page *mp;
     while (poll(polls, k, -1)>0) {
         // printf("wake\n");
@@ -419,12 +433,20 @@ int main(int argc, char *argv[]) {
             addr = res[fd].first;
             mp = (struct perf_event_mmap_page *)addr;
             head = res[fd].second;
-            if (head==mp->data_head) continue;
             ioctl(fd, PERF_EVENT_IOC_PAUSE_OUTPUT, 1);
+            if (head>mp->data_head) head=mp->data_head;
             head = mp->data_head-((mp->data_head-head)%mp->data_size);
-            while(head<mp->data_head) head+=process_event((char*)addr+mp->data_offset, mp->data_size, head);
-            ioctl(fd, PERF_EVENT_IOC_PAUSE_OUTPUT, 0);
+            while(head<mp->data_head) {
+                event_size = process_event((char*)addr+mp->data_offset, mp->data_size, head);
+                if (event_size<0) {
+                    // resync
+                    head=mp->data_head;
+                    break;
+                }
+                head += event_size;
+            }
             res[fd].second = mp->data_head;
+            ioctl(fd, PERF_EVENT_IOC_PAUSE_OUTPUT, 0);
         }
     }
 
