@@ -339,10 +339,10 @@ int process_event(char *base, unsigned long long size, unsigned long long offset
                             // r = r->add(y.first);
                             // sprintf(bb, "0x%llx", addr); r = r->add(string(bb));
                             x++;
-                            if (x==px->end()) r = r->add(y.first+"??");
+                            if (x==px->end()) r = r->add(y.first+"<?>??");
                             else {
-                                auto y = (*x).second;
-                                r = r->add(y.first+"?");
+                                auto z = (*x).second;
+                                r = r->add(y.first+"<?>"+z.first);
                             }
                         } else {
                             r = r->add(y.first);
