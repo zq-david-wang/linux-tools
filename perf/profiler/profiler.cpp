@@ -68,7 +68,6 @@ using K_STORE_T = map<unsigned long long, string>;
  * load FUNC symbols refering to the section indicated by the offset, relocate the virtual address
  */
 void parse_elf64(FILE *fp, unsigned long long v_addr, unsigned long long v_size, unsigned long long v_offset, STORE_T& store) {
-    // printf("read elf with offset 0x%llx, addr 0x%llx\n", v_offset, v_addr);
     Elf64_Ehdr ehdr;
     int rc = fread(&ehdr, sizeof(ehdr), 1, fp);
     if (rc != 1) return;
@@ -215,6 +214,10 @@ STORE_T*  load_symbol_pid(int pid) {
         load_symbol_from_file(bb, start, end-start, offset, *store);
     }
     fclose(fp);
+    if (store->size()==0) {
+        delete store;
+        store = NULL;
+    }
     return store;
 }
 
@@ -351,7 +354,6 @@ int process_event(char *base, unsigned long long size, unsigned long long offset
                 } else {
                     // sprintf(bb, "0x%llx", addr); r = r->add(string(bb));
                     // r = r->add(string("unknown"));
-                    unknowns[addr] = "no pid symbol";
                 }
                 user_mark=1;
             }
