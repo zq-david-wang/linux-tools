@@ -25,6 +25,9 @@ using namespace std;
 #define MAXN  512
 #define MAXCPU 128
 #define error(msg) do { perror(msg); exit(1); } while(0)
+
+static char gflag_kernel_only = 0;
+
 //--------------------------------Tree for call chain and report-------------------------------
 //
 struct TNode {
@@ -329,6 +332,7 @@ int process_event(char *base, unsigned long long size, unsigned long long offset
                     r = r->add(string("unknown"));
                 }
             } else {
+                if (gflag_kernel_only) continue;
                 if (px) {
                     auto x = px->upper_bound(addr);
                     if (x==px->begin()) {
@@ -365,7 +369,9 @@ int process_event(char *base, unsigned long long size, unsigned long long offset
 int main(int argc, char *argv[]) {
     kernel_symbols = load_kernel();
     if (argc<2) { printf("Need pid\n"); return 1; }
-    int pid = atoi(argv[1]); if (pid<=0) { printf("invalid pid %s\n", argv[1]); return 1; }
+    int pid = atoi(argv[1]);
+    if (pid<0) { gflag_kernel_only = 1; pid=-pid; }
+    if (pid==0) { printf("invalid pid %s\n", argv[1]); return 1; }
     // find cgroup
     char xb[256], xb2[256];
     int i, j, k, fd;
@@ -412,6 +418,8 @@ int main(int argc, char *argv[]) {
     attr.freq = 1;
     attr.wakeup_events = 16;
     attr.sample_type = PERF_SAMPLE_TID|PERF_SAMPLE_CALLCHAIN;
+    attr.sample_max_stack = 32;
+    if (gflag_kernel_only) attr.exclude_callchain_user = 1;
     for (i=0, k=0; i<cpu_num&&i<MAXCPU; i++) {
         printf("attaching cpu %d\n", i);
         fd = perf_event_open(&attr, cgroup_id, i, -1, PERF_FLAG_FD_CLOEXEC|PERF_FLAG_PID_CGROUP);

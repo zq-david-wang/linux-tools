@@ -19,6 +19,10 @@ The profiler would open perf event with the cgroup which controls the specified 
 ```
 ./profiler <pid>
 ```
+To profile kernel call chains, run with a nagative pid value
+```
+./profiler -<pid>
+```
 
 To create a perf-event cgroup
 
@@ -35,3 +39,7 @@ For cgroup v2, just use /sys/fs/cgroup/<somename>
 ## Example
 When profiler terminated, a report is generated, following is an example showing the performance impact from seccomp when running a high-IO program within a docker container.
 ![example](./example1.png "report")
+
+Profiling kernel only, following is what firefox's profiling snap compared with chromium's
+![example](./example2.png "report")
+
