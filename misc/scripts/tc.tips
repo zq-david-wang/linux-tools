@@ -1,0 +1,9 @@
+tc qdisc add dev br-0d34a2e009d7 parent root handle 1: htb default 1
+tc qdisc class add dev br-0d34a2e009d7 parent 1: classid 1:1 htb rate 100mbit burst 16M
+tc class add dev br-0d34a2e009d7 parent 1: classid 1:1 htb rate 100mbit burst 16M
+tc class add dev br-0d34a2e009d7 parent 1: classid 1:ffff htb rate 100mbit burst 16M
+tc qdisc add dev br-0d34a2e009d7 parent 1:ffff handle 2: netem delay 10ms 3ms
+
+bpftool prog load sock_sillycreate_kern.o /sys/fs/bpf/silly_cgroup_prog
+bpftool cgroup attach /sys/fs/cgroup/mytest sock_create pinned /sys/fs/bpf/silly_cgroup_prog
+
