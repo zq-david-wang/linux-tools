@@ -309,7 +309,7 @@ int process_event(char *base, unsigned long long size, unsigned long long offset
         if (pid_symbols.count(pid)==0) pid_symbols[pid] = load_symbol_pid(pid);
         STORE_T* px = pid_symbols[pid];
         addr0 = *((unsigned long long *)(base+offset));
-        char user_mark = 0;
+        char user_mark=0, start_mark=0;
         for (int i=nr-1; i>=0; i--) {
             o = i*8+offset; if (o>=size) o-=size;
             addr = *((unsigned long long*)(base+o));
@@ -337,21 +337,26 @@ int process_event(char *base, unsigned long long size, unsigned long long offset
                     auto x = px->upper_bound(addr);
                     if (x==px->begin()) {
                         // sprintf(bb, "0x%llx", addr); r = r->add(string(bb));
-                        auto y = (*x).second;
-                        r = r->add(y.first+"?");
+                        if (start_mark) {
+                            auto y = (*x).second;
+                            r = r->add(y.first+"?");
+                        }
                     } else {
                         x--;
                         auto y = (*x).second;
                         if (y.second && addr>(*x).first+y.second) {
                             // r = r->add(y.first);
                             // sprintf(bb, "0x%llx", addr); r = r->add(string(bb));
-                            x++;
-                            if (x==px->end()) r = r->add(y.first+"??");
-                            else {
-                                auto z = (*x).second;
-                                r = r->add(y.first+"?"+z.first);
+                            if (start_mark) {
+                                x++;
+                                if (x==px->end()) r = r->add(y.first+"??");
+                                else {
+                                    auto z = (*x).second;
+                                    r = r->add(y.first+"?"+z.first);
+                                }
                             }
                         } else {
+                            start_mark=1;
                             r = r->add(y.first);
                         }
                     }
