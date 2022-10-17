@@ -1,0 +1,198 @@
+diff --git a/include/linux/mm.h b/include/linux/mm.h
+index 8bbcccbc5565..797cc64fe182 100644
+--- a/include/linux/mm.h
++++ b/include/linux/mm.h
+@@ -2721,6 +2721,7 @@ unsigned long randomize_stack_top(unsigned long stack_top);
+ unsigned long randomize_page(unsigned long start, unsigned long range);
+ 
+ extern unsigned long get_unmapped_area(struct file *, unsigned long, unsigned long, unsigned long, unsigned long);
++extern unsigned long get_unmapped_area2(struct mm_struct *mm, struct file *, unsigned long, unsigned long, unsigned long, unsigned long);
+ 
+ extern unsigned long mmap_region(struct file *file, unsigned long addr,
+ 	unsigned long len, vm_flags_t vm_flags, unsigned long pgoff,
+@@ -3474,5 +3475,7 @@ madvise_set_anon_name(struct mm_struct *mm, unsigned long start,
+  * default, the flag is not set.
+  */
+ #define  ZAP_FLAG_DROP_MARKER        ((__force zap_flags_t) BIT(0))
++unsigned long mremap_task(struct task_struct *current_task, unsigned long addr,
++    unsigned long old_len, unsigned long new_len, unsigned long flags, unsigned long new_addr);
+ 
+ #endif /* _LINUX_MM_H */
+diff --git a/mm/mmap.c b/mm/mmap.c
+index 6e447544f07d..b34fbb6a6776 100644
+--- a/mm/mmap.c
++++ b/mm/mmap.c
+@@ -1798,6 +1798,50 @@ get_unmapped_area(struct file *file, unsigned long addr, unsigned long len,
+ 
+ EXPORT_SYMBOL(get_unmapped_area);
+ 
++unsigned long
++get_unmapped_area2(struct mm_struct *mm, struct file *file, unsigned long addr, unsigned long len,
++		unsigned long pgoff, unsigned long flags)
++{
++	unsigned long (*get_area)(struct file *, unsigned long,
++				  unsigned long, unsigned long, unsigned long);
++
++	unsigned long error = arch_mmap_check(addr, len, flags);
++	if (error)
++		return error;
++
++	/* Careful about overflows.. */
++	if (len > TASK_SIZE)
++		return -ENOMEM;
++
++	get_area = mm->get_unmapped_area;
++	if (file) {
++		if (file->f_op->get_unmapped_area)
++			get_area = file->f_op->get_unmapped_area;
++	} else if (flags & MAP_SHARED) {
++		/*
++		 * mmap_region() will call shmem_zero_setup() to create a file,
++		 * so use shmem's get_unmapped_area in case it can be huge.
++		 * do_mmap() will clear pgoff, so match alignment.
++		 */
++		pgoff = 0;
++		get_area = shmem_get_unmapped_area;
++	} else if (IS_ENABLED(CONFIG_TRANSPARENT_HUGEPAGE)) {
++		/* Ensures that larger anonymous mappings are THP aligned. */
++		get_area = thp_get_unmapped_area;
++	}
++
++	addr = get_area(file, addr, len, pgoff, flags);
++	if (IS_ERR_VALUE(addr))
++		return addr;
++
++	if (addr > TASK_SIZE - len)
++		return -ENOMEM;
++	if (offset_in_page(addr))
++		return -EINVAL;
++
++	error = security_mmap_addr(addr);
++	return error ? error : addr;
++}
+ /**
+  * find_vma_intersection() - Look up the first VMA which intersects the interval
+  * @mm: The process address space.
+@@ -3308,8 +3352,8 @@ static int special_mapping_mremap(struct vm_area_struct *new_vma)
+ {
+ 	struct vm_special_mapping *sm = new_vma->vm_private_data;
+ 
+-	if (WARN_ON_ONCE(current->mm != new_vma->vm_mm))
+-		return -EFAULT;
++	// if (WARN_ON_ONCE(current->mm != new_vma->vm_mm))
++	//	return -EFAULT;
+ 
+ 	if (sm->mremap)
+ 		return sm->mremap(sm, new_vma);
+diff --git a/mm/mremap.c b/mm/mremap.c
+index e465ffe279bb..01bba4bf97f6 100644
+--- a/mm/mremap.c
++++ b/mm/mremap.c
+@@ -724,10 +724,11 @@ static unsigned long move_vma(struct vm_area_struct *vma,
+ 	return new_addr;
+ }
+ 
+-static struct vm_area_struct *vma_to_resize(unsigned long addr,
++static struct vm_area_struct *vma_to_resize(struct mm_struct *mm,
++        unsigned long addr,
+ 	unsigned long old_len, unsigned long new_len, unsigned long flags)
+ {
+-	struct mm_struct *mm = current->mm;
++	// struct mm_struct *mm = current->mm;
+ 	struct vm_area_struct *vma;
+ 	unsigned long pgoff;
+ 
+@@ -778,13 +779,14 @@ static struct vm_area_struct *vma_to_resize(unsigned long addr,
+ 	return vma;
+ }
+ 
+-static unsigned long mremap_to(unsigned long addr, unsigned long old_len,
++static unsigned long mremap_to(struct mm_struct *mm,
++        unsigned long addr, unsigned long old_len,
+ 		unsigned long new_addr, unsigned long new_len, bool *locked,
+ 		unsigned long flags, struct vm_userfaultfd_ctx *uf,
+ 		struct list_head *uf_unmap_early,
+ 		struct list_head *uf_unmap)
+ {
+-	struct mm_struct *mm = current->mm;
++	// struct mm_struct *mm = current->mm;
+ 	struct vm_area_struct *vma;
+ 	unsigned long ret = -EINVAL;
+ 	unsigned long map_flags = 0;
+@@ -829,7 +831,7 @@ static unsigned long mremap_to(unsigned long addr, unsigned long old_len,
+ 		old_len = new_len;
+ 	}
+ 
+-	vma = vma_to_resize(addr, old_len, new_len, flags);
++	vma = vma_to_resize(mm, addr, old_len, new_len, flags);
+ 	if (IS_ERR(vma)) {
+ 		ret = PTR_ERR(vma);
+ 		goto out;
+@@ -848,7 +850,7 @@ static unsigned long mremap_to(unsigned long addr, unsigned long old_len,
+ 	if (vma->vm_flags & VM_MAYSHARE)
+ 		map_flags |= MAP_SHARED;
+ 
+-	ret = get_unmapped_area(vma->vm_file, new_addr, new_len, vma->vm_pgoff +
++	ret = get_unmapped_area2(mm, vma->vm_file, new_addr, new_len, vma->vm_pgoff +
+ 				((addr - vma->vm_start) >> PAGE_SHIFT),
+ 				map_flags);
+ 	if (IS_ERR_VALUE(ret))
+@@ -890,7 +892,13 @@ SYSCALL_DEFINE5(mremap, unsigned long, addr, unsigned long, old_len,
+ 		unsigned long, new_len, unsigned long, flags,
+ 		unsigned long, new_addr)
+ {
+-	struct mm_struct *mm = current->mm;
++    return mremap_task(current, addr, old_len, new_len, flags, new_addr);
++}
++
++unsigned long mremap_task(struct task_struct *current_task, unsigned long addr,
++    unsigned long old_len, unsigned long new_len, unsigned long flags, unsigned long new_addr)
++{
++	struct mm_struct *mm = current_task->mm;
+ 	struct vm_area_struct *vma;
+ 	unsigned long ret = -EINVAL;
+ 	bool locked = false;
+@@ -940,7 +948,7 @@ SYSCALL_DEFINE5(mremap, unsigned long, addr, unsigned long, old_len,
+ 	if (!new_len)
+ 		return ret;
+ 
+-	if (mmap_write_lock_killable(current->mm))
++	if (mmap_write_lock_killable(current_task->mm))
+ 		return -EINTR;
+ 	vma = vma_lookup(mm, addr);
+ 	if (!vma) {
+@@ -969,7 +977,7 @@ SYSCALL_DEFINE5(mremap, unsigned long, addr, unsigned long, old_len,
+ 	}
+ 
+ 	if (flags & (MREMAP_FIXED | MREMAP_DONTUNMAP)) {
+-		ret = mremap_to(addr, old_len, new_addr, new_len,
++		ret = mremap_to(mm, addr, old_len, new_addr, new_len,
+ 				&locked, flags, &uf, &uf_unmap_early,
+ 				&uf_unmap);
+ 		goto out;
+@@ -1002,7 +1010,7 @@ SYSCALL_DEFINE5(mremap, unsigned long, addr, unsigned long, old_len,
+ 	/*
+ 	 * Ok, we need to grow..
+ 	 */
+-	vma = vma_to_resize(addr, old_len, new_len, flags);
++	vma = vma_to_resize(mm, addr, old_len, new_len, flags);
+ 	if (IS_ERR(vma)) {
+ 		ret = PTR_ERR(vma);
+ 		goto out;
+@@ -1079,9 +1087,9 @@ SYSCALL_DEFINE5(mremap, unsigned long, addr, unsigned long, old_len,
+ 	if (offset_in_page(ret))
+ 		locked = false;
+ 	if (downgraded)
+-		mmap_read_unlock(current->mm);
++		mmap_read_unlock(current_task->mm);
+ 	else
+-		mmap_write_unlock(current->mm);
++		mmap_write_unlock(current_task->mm);
+ 	if (locked && new_len > old_len)
+ 		mm_populate(new_addr + old_len, new_len - old_len);
+ 	userfaultfd_unmap_complete(mm, &uf_unmap_early);
+@@ -1089,3 +1097,4 @@ SYSCALL_DEFINE5(mremap, unsigned long, addr, unsigned long, old_len,
+ 	userfaultfd_unmap_complete(mm, &uf_unmap);
+ 	return ret;
+ }
++EXPORT_SYMBOL(mremap_task);
